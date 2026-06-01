@@ -897,9 +897,108 @@
             perspective: 1200px;
             perspective-origin: 50% 50%;
         }
+
+        /* ========== AMBIENT BACKGROUND EFFECTS ========== */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.5;
+        }
+
+        .ambient-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            pointer-events: none;
+            z-index: 0;
+            animation: orbFloat 12s ease-in-out infinite;
+        }
+
+        .ambient-orb-1 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 240, 255, 0.08) 0%, transparent 70%);
+            top: -200px;
+            right: -200px;
+        }
+
+        .ambient-orb-2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(155, 93, 229, 0.06) 0%, transparent 70%);
+            bottom: 20%;
+            left: -150px;
+            animation-delay: -6s;
+        }
+
+        .ambient-orb-3 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 240, 255, 0.05) 0%, transparent 70%);
+            bottom: -100px;
+            right: 10%;
+            animation-delay: -3s;
+        }
+
+        @keyframes orbFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -20px) scale(1.05); }
+            66% { transform: translate(-20px, 15px) scale(0.95); }
+        }
+
+        /* Hero gradient glow */
+        .hero-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 800px;
+            height: 800px;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, rgba(0, 240, 255, 0.06) 0%, rgba(155, 93, 229, 0.04) 40%, transparent 70%);
+            pointer-events: none;
+            z-index: 1;
+            animation: heroGlow 6s ease-in-out infinite;
+        }
+
+        @keyframes heroGlow {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+            50% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.7; }
+        }
+
+        /* Section divider line */
+        .section-divider {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--cyan), var(--violet));
+            margin: 0 auto 3rem;
+            border-radius: 2px;
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+        }
+
+        /* Floating background grid */
+        .bg-grid {
+            position: fixed;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(0, 240, 255, 0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 240, 255, 0.015) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
+        }
     </style>
 </head>
 <body>
+    <!-- Background Effects -->
+    <div class="bg-grid"></div>
+    <div class="ambient-orb ambient-orb-1"></div>
+    <div class="ambient-orb ambient-orb-2"></div>
+    <div class="ambient-orb ambient-orb-3"></div>
+
     <!-- Scroll Progress -->
     <div id="scroll-progress"></div>
 
@@ -930,6 +1029,7 @@
     <!-- ========== HERO ========== -->
     <section id="hero" class="section">
         <canvas id="hero-canvas"></canvas>
+        <div class="hero-glow"></div>
         <div class="hero-content">
             <p class="hero-greeting">Hello, I'm</p>
             <h1 class="hero-name">Your Name</h1>
