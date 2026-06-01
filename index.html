@@ -416,6 +416,32 @@
             transition: box-shadow 0.4s ease;
         }
 
+        .about-card::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: calc(var(--radius) + 2px);
+            background: conic-gradient(from var(--card-angle, 0deg), var(--cyan), var(--violet), transparent, var(--cyan));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+            animation: cardBorderRotate 4s linear infinite;
+        }
+
+        .about-card:hover::before {
+            opacity: 0.5;
+        }
+
+        @keyframes cardBorderRotate {
+            to { --card-angle: 360deg; }
+        }
+
+        @property --card-angle {
+            syntax: '<angle>';
+            initial-value: 0deg;
+            inherits: false;
+        }
+
         .about-card:hover {
             box-shadow: var(--glow-cyan);
         }
@@ -691,6 +717,25 @@
             font-size: 0.72rem;
             color: var(--cyan);
             letter-spacing: 0.04em;
+        }
+
+        .project-card .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-top: 0.8rem;
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--cyan);
+            letter-spacing: 0.03em;
+            transition: gap 0.3s ease, color 0.3s ease;
+            cursor: none;
+        }
+
+        .project-card .card-link:hover {
+            gap: 0.8rem;
+            color: var(--violet);
         }
 
         .project-card .card-glare {
@@ -1191,6 +1236,7 @@
                             <span>React</span>
                             <span>WebGL</span>
                         </div>
+                        <a href="#" class="card-link">View Project <span>→</span></a>
                     </div>
                     <div class="card-glare"></div>
                 </div>
@@ -1219,6 +1265,7 @@
                             <span>Figma</span>
                             <span>Branding</span>
                         </div>
+                        <a href="#" class="card-link">View Project <span>→</span></a>
                     </div>
                     <div class="card-glare"></div>
                 </div>
@@ -1247,6 +1294,7 @@
                             <span>React</span>
                             <span>Motion</span>
                         </div>
+                        <a href="#" class="card-link">View Project <span>→</span></a>
                     </div>
                     <div class="card-glare"></div>
                 </div>
