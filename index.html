@@ -1287,7 +1287,7 @@
         });
 
         // ============ THREE.JS HERO BACKGROUND ============
-        let scene, camera, renderer, torusKnot, particles;
+        let scene, camera, renderer, torusKnot, icosahedron, innerGlow, particles, particles2;
         const heroCanvas = document.getElementById('hero-canvas');
 
         function initThree() {
@@ -1299,35 +1299,77 @@
             renderer.setSize(window.innerWidth, window.innerHeight);
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-            // Wireframe Torus Knot
-            const geometry = new THREE.TorusKnotGeometry(1.5, 0.5, 120, 16);
-            const material = new THREE.MeshBasicMaterial({
+            // Wireframe Torus Knot (cyan)
+            const torusGeo = new THREE.TorusKnotGeometry(1.5, 0.5, 120, 16);
+            const torusMat = new THREE.MeshBasicMaterial({
                 color: 0x00f0ff,
                 wireframe: true,
                 transparent: true,
-                opacity: 0.15,
+                opacity: 0.12,
                 blending: THREE.AdditiveBlending
             });
-            torusKnot = new THREE.Mesh(geometry, material);
+            torusKnot = new THREE.Mesh(torusGeo, torusMat);
             scene.add(torusKnot);
 
-            // Floating Particles
+            // Wireframe Icosahedron (violet) — orbits around torus
+            const icoGeo = new THREE.IcosahedronGeometry(0.8, 1);
+            const icoMat = new THREE.MeshBasicMaterial({
+                color: 0x9b5de5,
+                wireframe: true,
+                transparent: true,
+                opacity: 0.18,
+                blending: THREE.AdditiveBlending
+            });
+            icosahedron = new THREE.Mesh(icoGeo, icoMat);
+            icosahedron.position.set(2.5, 0, 0);
+            scene.add(icosahedron);
+
+            // Inner glow sphere
+            const glowGeo = new THREE.SphereGeometry(0.6, 32, 32);
+            const glowMat = new THREE.MeshBasicMaterial({
+                color: 0x00f0ff,
+                transparent: true,
+                opacity: 0.04,
+                blending: THREE.AdditiveBlending
+            });
+            innerGlow = new THREE.Mesh(glowGeo, glowMat);
+            scene.add(innerGlow);
+
+            // Floating Particles — cyan
             const particleGeo = new THREE.BufferGeometry();
-            const count = 300;
+            const count = 400;
             const positions = new Float32Array(count * 3);
             for (let i = 0; i < count * 3; i++) {
-                positions[i] = (Math.random() - 0.5) * 15;
+                positions[i] = (Math.random() - 0.5) * 18;
             }
             particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
             const particleMat = new THREE.PointsMaterial({
-                color: 0x9b5de5,
-                size: 0.02,
+                color: 0x00f0ff,
+                size: 0.018,
                 transparent: true,
-                opacity: 0.6,
+                opacity: 0.5,
                 blending: THREE.AdditiveBlending
             });
             particles = new THREE.Points(particleGeo, particleMat);
             scene.add(particles);
+
+            // Second particle layer — violet
+            const particleGeo2 = new THREE.BufferGeometry();
+            const count2 = 200;
+            const positions2 = new Float32Array(count2 * 3);
+            for (let i = 0; i < count2 * 3; i++) {
+                positions2[i] = (Math.random() - 0.5) * 12;
+            }
+            particleGeo2.setAttribute('position', new THREE.BufferAttribute(positions2, 3));
+            const particleMat2 = new THREE.PointsMaterial({
+                color: 0x9b5de5,
+                size: 0.025,
+                transparent: true,
+                opacity: 0.4,
+                blending: THREE.AdditiveBlending
+            });
+            particles2 = new THREE.Points(particleGeo2, particleMat2);
+            scene.add(particles2);
 
             window.addEventListener('resize', () => {
                 camera.aspect = window.innerWidth / window.innerHeight;
@@ -1336,20 +1378,34 @@
             });
         }
 
+        let threeTime = 0;
         function animateThree() {
             requestAnimationFrame(animateThree);
+            threeTime += 0.01;
 
-            // Slow rotation
+            // Torus knot — slow rotation
             torusKnot.rotation.x += 0.003;
             torusKnot.rotation.y += 0.005;
-
-            // Mouse-reactive rotation
+            // Mouse-reactive
             torusKnot.rotation.x += mouse.y * 0.003;
             torusKnot.rotation.y += mouse.x * 0.003;
 
+            // Icosahedron — orbits around center
+            icosahedron.position.x = Math.cos(threeTime * 0.5) * 2.5;
+            icosahedron.position.z = Math.sin(threeTime * 0.5) * 2.5;
+            icosahedron.position.y = Math.sin(threeTime * 0.8) * 0.5;
+            icosahedron.rotation.x += 0.008;
+            icosahedron.rotation.y += 0.012;
+
+            // Inner glow — pulses
+            const glowScale = 1 + Math.sin(threeTime * 2) * 0.15;
+            innerGlow.scale.set(glowScale, glowScale, glowScale);
+
             // Particles drift
-            particles.rotation.y += 0.0005;
+            particles.rotation.y += 0.0004;
             particles.rotation.x += 0.0002;
+            particles2.rotation.y -= 0.0003;
+            particles2.rotation.z += 0.0001;
 
             renderer.render(scene, camera);
         }
