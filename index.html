@@ -1601,6 +1601,75 @@
             }
         });
 
+        // ============ PARALLAX SCROLLING ============
+        // Hero canvas parallax — moves slower than content
+        gsap.to('#hero-canvas', {
+            y: 200,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '#hero',
+                start: 'top top',
+                end: 'bottom top',
+                scrub: 1
+            }
+        });
+
+        // Hero content fades out on scroll
+        gsap.to('.hero-content', {
+            y: -100,
+            opacity: 0,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '#hero',
+                start: '60% top',
+                end: 'bottom top',
+                scrub: 1
+            }
+        });
+
+        // Hero glow parallax
+        gsap.to('.hero-glow', {
+            y: 150,
+            scale: 0.8,
+            opacity: 0,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '#hero',
+                start: '40% top',
+                end: 'bottom top',
+                scrub: 1
+            }
+        });
+
+        // Scroll indicator fade
+        gsap.to('.hero-scroll-indicator', {
+            opacity: 0,
+            y: -20,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '#hero',
+                start: '20% top',
+                end: '40% top',
+                scrub: 1
+            }
+        });
+
+        // Section scale reveals — each section has a subtle scale-up on enter
+        document.querySelectorAll('.section:not(#hero)').forEach(section => {
+            gsap.from(section, {
+                scale: 0.96,
+                opacity: 0.5,
+                duration: 1,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: section,
+                    start: 'top 90%',
+                    end: 'top 60%',
+                    scrub: 1
+                }
+            });
+        });
+
         // ============ 3D TILT EFFECTS ============
         function handleTilt(card, inner, glare) {
             card.addEventListener('mousemove', (e) => {
