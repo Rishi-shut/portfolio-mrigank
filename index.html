@@ -1456,62 +1456,158 @@
             text-decoration: none;
         }
         .btn-resume:hover {
-            background: var(--accent);
-            color: #fff;
-            border-color: var(--accent);
-            transform: translateY(-2px);
             box-shadow: var(--shadow-lg);
         }
 
-        /* ========== LEETCODE DASHBOARD ========== */
+        /* ========== REDESIGNED LEETCODE DASHBOARD ========== */
         #leetcode { background: var(--bg-white); }
-
-        .lc-dashboard {
+        .lc-dashboard-container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .lc-glass-card {
+            background: rgba(255, 255, 255, 0.45);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            display: grid;
+            grid-template-columns: 240px 1fr 1fr;
+            padding: 2.5rem;
+            gap: 3rem;
+            align-items: center;
+            transition: all var(--transition);
+        }
+        [data-theme="dark"] .lc-glass-card {
+            background: rgba(19, 19, 22, 0.45);
+            border-color: var(--border);
+        }
+        
+        .lc-left-panel {
             display: flex;
             flex-direction: column;
-            gap: 2rem;
+            align-items: center;
+            justify-content: center;
+            border-right: 1px solid var(--border-light);
+            padding-right: 2rem;
+            height: 100%;
+        }
+        [data-theme="dark"] .lc-left-panel {
+            border-right-color: var(--border);
         }
 
-        .lc-stats-row {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
+        .lc-middle-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            justify-content: center;
+            border-right: 1px solid var(--border-light);
+            padding-right: 2rem;
+            height: 100%;
+        }
+        [data-theme="dark"] .lc-middle-panel {
+            border-right-color: var(--border);
+        }
+        
+        .lc-right-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            height: 100%;
+            justify-content: center;
+        }
+
+        .lc-panel-label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-light);
+            margin-bottom: 0.2rem;
+        }
+
+        .lc-difficulty-bars {
+            display: flex;
+            flex-direction: column;
             gap: 1rem;
         }
 
-        .lc-stat-card {
-            background: var(--bg);
-            border: 1px solid var(--border-light);
-            border-radius: var(--radius);
-            padding: 1.5rem 1rem;
-            text-align: center;
-            transition: all var(--transition);
-        }
-        .lc-stat-card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-md);
-            border-color: var(--accent-light);
-        }
-        .lc-stat-icon { font-size: 1.3rem; margin-bottom: 0.5rem; }
-        .lc-stat-val {
-            font-family: var(--font-heading);
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--text);
-            line-height: 1;
-        }
-        .lc-stat-label {
-            font-size: 0.72rem;
-            color: var(--text-light);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-top: 0.3rem;
+        .lc-bar-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
         }
 
-        .lc-body {
-            display: grid;
-            grid-template-columns: 200px 1fr;
-            gap: 2rem;
-            align-items: start;
+        .lc-bar-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .lc-diff-label {
+            color: var(--text-secondary);
+        }
+
+        .lc-diff-count {
+            color: var(--text);
+        }
+        .lc-diff-count b {
+            font-weight: 700;
+        }
+        .lc-total-q {
+            color: var(--text-light);
+            font-size: 0.75rem;
+        }
+
+        .lc-bar-track {
+            height: 6px;
+            background: var(--border-light);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        [data-theme="dark"] .lc-bar-track {
+            background: var(--border);
+        }
+
+        .lc-bar-fill {
+            height: 100%;
+            border-radius: 10px;
+            width: 0%;
+            transition: width 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .lc-rank-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem 1.2rem;
+            background: var(--bg);
+            border-radius: var(--radius);
+            border: 1px solid var(--border-light);
+        }
+        [data-theme="dark"] .lc-rank-badge {
+            background: var(--bg-warm);
+        }
+
+        .lc-rank-icon {
+            font-size: 1.4rem;
+        }
+
+        .lc-rank-label {
+            font-size: 0.68rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .lc-rank-val {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text);
         }
 
         .lc-donut-wrap {
@@ -1521,6 +1617,7 @@
             gap: 0.8rem;
         }
         .lc-donut { width: 150px; height: 150px; }
+        
         .lc-username-wrap {
             display: flex;
             align-items: center;
@@ -1538,56 +1635,16 @@
         }
         .lc-ext-link:hover { color: var(--accent); }
 
-        .lc-recent { flex: 1; }
-        .lc-recent-label {
-            font-size: 0.78rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--text-light);
-            margin-bottom: 1rem;
-        }
         .lc-recent-list {
             display: flex;
             flex-direction: column;
             gap: 0.6rem;
         }
-        .lc-skeleton {
-            height: 44px;
-            background: var(--border-light);
-            border-radius: var(--radius-sm);
-            animation: lcPulse 1.4s ease-in-out infinite;
-        }
-        @keyframes lcPulse {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
-        }
-        .lc-recent-item {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            padding: 0.7rem 1rem;
-            background: var(--bg);
-            border-radius: var(--radius-sm);
-            border: 1px solid var(--border-light);
-            transition: all var(--transition);
-            text-decoration: none;
-        }
-        .lc-recent-item:hover {
-            border-color: var(--accent-light);
-            transform: translateX(4px);
-        }
-        .lc-pill {
-            padding: 0.15rem 0.55rem;
-            border-radius: 50px;
-            font-size: 0.65rem;
-            font-weight: 600;
-            flex-shrink: 0;
-        }
         .lc-pill.easy   { background: rgba(0,184,163,0.12); color: #00b8a3; }
         .lc-pill.medium { background: rgba(255,192,30,0.12); color: #c98d00; }
         .lc-pill.hard   { background: rgba(255,55,95,0.12);  color: #ff375f; }
         .lc-pill.lang   { background: var(--bg-accent); color: var(--accent); }
+
         .lc-item-name {
             font-size: 0.88rem;
             color: var(--text);
@@ -1605,7 +1662,7 @@
         }
         .lc-error { color: #ff375f; }
 
-        /* ========== SIGNAL ROUTE GAME ========== */
+        /* ========== GRADIENT DESCENT FITTING GAME ========== */
         .game-shell {
             background: var(--bg-white);
             border: 1px solid var(--border-light);
@@ -1618,36 +1675,36 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 1rem 1.5rem;
+            padding: 1.2rem 1.8rem;
             border-bottom: 1px solid var(--border-light);
             background: var(--bg);
             flex-wrap: wrap;
             gap: 0.8rem;
         }
-        .game-info { display: flex; align-items: center; gap: 1.4rem; flex-wrap: wrap; }
+        .game-info { display: flex; align-items: center; gap: 1.8rem; flex-wrap: wrap; }
         .game-level-badge {
-            padding: 0.3rem 0.9rem;
+            padding: 0.35rem 1rem;
             background: var(--accent);
             color: #fff;
             border-radius: 50px;
-            font-size: 0.78rem;
+            font-size: 0.8rem;
             font-weight: 600;
             letter-spacing: 0.05em;
         }
         .game-stat {
-            font-size: 0.85rem;
+            font-size: 0.88rem;
             color: var(--text-secondary);
         }
         .game-stat b { color: var(--text); }
         .game-btns { display: flex; gap: 0.6rem; }
         .game-btn {
-            padding: 0.5rem 1.2rem;
+            padding: 0.55rem 1.4rem;
             border: 1.5px solid var(--border);
             border-radius: 50px;
             background: transparent;
             color: var(--text);
             font-family: var(--font-body);
-            font-size: 0.82rem;
+            font-size: 0.85rem;
             font-weight: 500;
             cursor: pointer;
             transition: all var(--transition);
@@ -1664,7 +1721,7 @@
         .game-win-overlay {
             position: absolute;
             inset: 0;
-            background: rgba(0,0,0,0.55);
+            background: rgba(0,0,0,0.65);
             backdrop-filter: blur(8px);
             display: flex;
             align-items: center;
@@ -1686,6 +1743,225 @@
             margin-bottom: 0.5rem;
         }
         .game-win-inner p { color: var(--text-secondary); font-size: 1rem; }
+
+        .game-workspace {
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            background: var(--bg-white);
+        }
+        .game-controls {
+            padding: 2.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+            justify-content: center;
+            border-left: 1px solid var(--border-light);
+            background: var(--bg);
+        }
+        [data-theme="dark"] .game-controls {
+            border-left-color: var(--border);
+            background: var(--bg-warm);
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .control-group label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .slider-wrap {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .slider-wrap input[type="range"] {
+            flex: 1;
+            height: 6px;
+            background: var(--border);
+            border-radius: 10px;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        [data-theme="dark"] .slider-wrap input[type="range"] {
+            background: var(--border-light);
+        }
+
+        .slider-wrap input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--accent);
+            cursor: pointer;
+            transition: transform 0.1s ease;
+        }
+
+        .slider-wrap input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.25);
+        }
+
+        .slider-val {
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text);
+            min-width: 42px;
+            text-align: right;
+        }
+
+        .g-loss-value {
+            color: #ff375f;
+            transition: color 0.3s ease;
+        }
+        .g-loss-low {
+            color: #00b8a3 !important;
+        }
+
+        /* Project image overrides */
+        .project-card .project-image-hover {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s var(--transition);
+        }
+        .project-card:hover .project-image-hover {
+            transform: scale(1.04);
+        }
+
+        /* ========== MODAL OVERLAY ========== */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 100000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-container {
+            width: 90%;
+            max-width: 960px;
+            height: 85vh;
+            background: var(--bg-white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-xl);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transform: scale(0.95) translateY(20px);
+            transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .modal-overlay.active .modal-container {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.8rem;
+            border-bottom: 1px solid var(--border-light);
+            background: var(--bg);
+        }
+
+        .modal-header h3 {
+            font-size: 1.1rem;
+            font-family: var(--font-heading);
+            font-weight: 600;
+        }
+
+        .modal-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .modal-btn {
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color var(--transition);
+        }
+        .modal-btn:hover {
+            color: var(--accent);
+        }
+
+        .modal-close-btn {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            line-height: 1;
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: color var(--transition);
+        }
+
+        .modal-close-btn:hover {
+            color: var(--accent);
+        }
+
+        .modal-body {
+            flex: 1;
+            background: #fdfdfd;
+        }
+        [data-theme="dark"] .modal-body {
+            background: #17171C;
+        }
+
+        @media (max-width: 900px) {
+            .lc-glass-card {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 2rem;
+            }
+            .lc-left-panel,
+            .lc-middle-panel {
+                border-right: none;
+                border-bottom: 1px solid var(--border-light);
+                padding-right: 0;
+                padding-bottom: 2rem;
+            }
+            [data-theme="dark"] .lc-left-panel,
+            [data-theme="dark"] .lc-middle-panel {
+                border-bottom-color: var(--border);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .game-workspace {
+                grid-template-columns: 1fr;
+            }
+            .game-controls {
+                border-left: none;
+                border-top: 1px solid var(--border-light);
+            }
+            [data-theme="dark"] .game-controls {
+                border-top-color: var(--border);
+            }
+        }
 
         /* ========== CONTACT NOTE ========== */
         .contact-note {
@@ -1934,39 +2210,8 @@
             <p class="section-subheading">From model training to live deployment — end-to-end ML systems solving real problems.</p>
             <div class="projects-grid" style="grid-template-columns: 1fr; max-width: 720px; margin: 0 auto;">
                 <div class="project-card reveal-scroll">
-                    <div class="card-image" style="background: linear-gradient(135deg, #e0e7ff 0%, #f0fdf4 100%);">
-                        <div class="card-image-bg">
-                            <div class="project-mockup">
-                                <div class="mockup-bar">
-                                    <div class="dot red"></div>
-                                    <div class="dot yellow"></div>
-                                    <div class="dot green"></div>
-                                </div>
-                                <div class="mockup-body mockup-gamma">
-                                    <div class="gamma-header">
-                                        <div class="gamma-title">Fraud Detection</div>
-                                        <div class="gamma-period">Live ✓</div>
-                                    </div>
-                                    <div class="gamma-chart">
-                                        <div class="chart-bar" data-height="55"></div>
-                                        <div class="chart-bar" data-height="87"></div>
-                                        <div class="chart-bar" data-height="40"></div>
-                                        <div class="chart-bar" data-height="92"></div>
-                                        <div class="chart-bar" data-height="70"></div>
-                                    </div>
-                                    <div class="gamma-metrics">
-                                        <div class="g-metric">
-                                            <span>Accuracy</span>
-                                            <strong>87%</strong>
-                                        </div>
-                                        <div class="g-metric">
-                                            <span>FP Cut</span>
-                                            <strong>-16%</strong>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="card-image">
+                        <img src="assets/images/fraud_detection.png" alt="Credit Card Fraud Detection Dashboard" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s var(--transition);" class="project-image-hover" />
                     </div>
                     <div class="card-body">
                         <div class="card-category">Machine Learning · Deployed</div>
@@ -1996,65 +2241,75 @@
             <h2 class="section-heading" data-animate="split">LeetCode. Every day, a sharper blade.</h2>
             <p class="section-subheading">Tracking consistency, difficulty distribution, and streaks across algorithmic challenges.</p>
 
-            <div class="lc-dashboard reveal-scroll">
-                <!-- Top stats row -->
-                <div class="lc-stats-row">
-                    <div class="lc-stat-card lc-total">
-                        <div class="lc-stat-icon">⚡</div>
-                        <div class="lc-stat-val" id="lc-total">—</div>
-                        <div class="lc-stat-label">Total Solved</div>
-                    </div>
-                    <div class="lc-stat-card lc-easy">
-                        <div class="lc-stat-icon" style="color:#00b8a3">●</div>
-                        <div class="lc-stat-val" id="lc-easy">—</div>
-                        <div class="lc-stat-label">Easy</div>
-                    </div>
-                    <div class="lc-stat-card lc-medium">
-                        <div class="lc-stat-icon" style="color:#ffc01e">●</div>
-                        <div class="lc-stat-val" id="lc-medium">—</div>
-                        <div class="lc-stat-label">Medium</div>
-                    </div>
-                    <div class="lc-stat-card lc-hard">
-                        <div class="lc-stat-icon" style="color:#ff375f">●</div>
-                        <div class="lc-stat-val" id="lc-hard">—</div>
-                        <div class="lc-stat-label">Hard</div>
-                    </div>
-                    <div class="lc-stat-card lc-rank">
-                        <div class="lc-stat-icon">🏆</div>
-                        <div class="lc-stat-val" id="lc-rank">—</div>
-                        <div class="lc-stat-label">Global Rank</div>
-                    </div>
-                </div>
-
-                <!-- Difficulty donut + recent problems -->
-                <div class="lc-body">
-                    <div class="lc-donut-wrap">
-                        <svg id="lc-donut" viewBox="0 0 120 120" class="lc-donut">
-                            <circle cx="60" cy="60" r="48" fill="none" stroke="var(--border)" stroke-width="16"/>
-                            <circle id="lc-arc-easy"   cx="60" cy="60" r="48" fill="none" stroke="#00b8a3" stroke-width="16" stroke-dasharray="0 302" stroke-linecap="round" transform="rotate(-90 60 60)"/>
-                            <circle id="lc-arc-medium" cx="60" cy="60" r="48" fill="none" stroke="#ffc01e" stroke-width="16" stroke-dasharray="0 302" stroke-linecap="round" transform="rotate(-90 60 60)"/>
-                            <circle id="lc-arc-hard"   cx="60" cy="60" r="48" fill="none" stroke="#ff375f" stroke-width="16" stroke-dasharray="0 302" stroke-linecap="round" transform="rotate(-90 60 60)"/>
-                            <text x="60" y="55" text-anchor="middle" font-family="var(--font-heading)" font-size="18" fill="var(--text)" id="lc-center-num">—</text>
-                            <text x="60" y="72" text-anchor="middle" font-family="var(--font-body)" font-size="8" fill="var(--text-light)">SOLVED</text>
-                        </svg>
-                        <div class="lc-username-wrap">
-                            <span class="lc-at">@</span><span id="lc-username-display">YOUR_USERNAME</span>
-                            <a id="lc-profile-link" href="https://leetcode.com/YOUR_USERNAME" target="_blank" rel="noopener" class="lc-ext-link">
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                            </a>
+            <div class="lc-dashboard-container reveal-scroll">
+                <!-- Unified Glass Card -->
+                <div class="lc-glass-card">
+                    <!-- Left: Circular stats -->
+                    <div class="lc-left-panel">
+                        <div class="lc-donut-wrap">
+                            <svg id="lc-donut" viewBox="0 0 120 120" class="lc-donut">
+                                <circle cx="60" cy="60" r="48" fill="none" stroke="var(--border)" stroke-width="12"/>
+                                <circle id="lc-arc-easy"   cx="60" cy="60" r="48" fill="none" stroke="#00b8a3" stroke-width="12" stroke-dasharray="0 302" stroke-linecap="round" transform="rotate(-90 60 60)"/>
+                                <circle id="lc-arc-medium" cx="60" cy="60" r="48" fill="none" stroke="#ffc01e" stroke-width="12" stroke-dasharray="0 302" stroke-linecap="round" transform="rotate(-90 60 60)"/>
+                                <circle id="lc-arc-hard"   cx="60" cy="60" r="48" fill="none" stroke="#ff375f" stroke-width="12" stroke-dasharray="0 302" stroke-linecap="round" transform="rotate(-90 60 60)"/>
+                                <text x="60" y="55" text-anchor="middle" font-family="var(--font-heading)" font-size="20" font-weight="700" fill="var(--text)" id="lc-center-num">—</text>
+                                <text x="60" y="74" text-anchor="middle" font-family="var(--font-body)" font-size="7" font-weight="600" fill="var(--text-light)" style="letter-spacing:0.1em;">SOLVED</text>
+                            </svg>
+                            <div class="lc-username-wrap">
+                                <span class="lc-at">@</span><span id="lc-username-display">Rishiiiiiiii</span>
+                                <a id="lc-profile-link" href="https://leetcode.com/Rishiiiiiiii" target="_blank" rel="noopener" class="lc-ext-link">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                </a>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="lc-recent">
-                        <div class="lc-recent-label">Recent Submissions</div>
+                    <!-- Middle: Breakdown Progress Bars -->
+                    <div class="lc-middle-panel">
+                        <h4 class="lc-panel-label">Difficulty distribution</h4>
+                        <div class="lc-difficulty-bars">
+                            <div class="lc-bar-item easy">
+                                <div class="lc-bar-info">
+                                    <span class="lc-diff-label">Easy</span>
+                                    <span class="lc-diff-count"><b id="lc-easy">0</b> / <span class="lc-total-q">947</span></span>
+                                </div>
+                                <div class="lc-bar-track"><div class="lc-bar-fill" id="lc-fill-easy" style="width: 0%; background: #00b8a3;"></div></div>
+                            </div>
+                            <div class="lc-bar-item medium">
+                                <div class="lc-bar-info">
+                                    <span class="lc-diff-label">Medium</span>
+                                    <span class="lc-diff-count"><b id="lc-medium">0</b> / <span class="lc-total-q">2063</span></span>
+                                </div>
+                                <div class="lc-bar-track"><div class="lc-bar-fill" id="lc-fill-medium" style="width: 0%; background: #ffc01e;"></div></div>
+                            </div>
+                            <div class="lc-bar-item hard">
+                                <div class="lc-bar-info">
+                                    <span class="lc-diff-label">Hard</span>
+                                    <span class="lc-diff-count"><b id="lc-hard">0</b> / <span class="lc-total-q">939</span></span>
+                                </div>
+                                <div class="lc-bar-track"><div class="lc-bar-fill" id="lc-fill-hard" style="width: 0%; background: #ff375f;"></div></div>
+                            </div>
+                        </div>
+                        <div class="lc-rank-badge">
+                            <div class="lc-rank-icon">🏆</div>
+                            <div>
+                                <div class="lc-rank-label">Global Rank</div>
+                                <div class="lc-rank-val" id="lc-rank">—</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Submissions -->
+                    <div class="lc-right-panel">
+                        <h4 class="lc-panel-label">Recent Submissions</h4>
                         <div id="lc-recent-list" class="lc-recent-list">
                             <div class="lc-skeleton"></div>
                             <div class="lc-skeleton"></div>
                             <div class="lc-skeleton"></div>
                             <div class="lc-skeleton"></div>
                         </div>
-                        <div class="lc-loading" id="lc-loading">Fetching from LeetCode…</div>
-                        <div class="lc-error" id="lc-error" style="display:none">Could not load live data — set your username in the config block.</div>
+                        <div class="lc-loading" id="lc-loading">Fetching live LeetCode stats…</div>
+                        <div class="lc-error" id="lc-error" style="display:none">Could not load live data.</div>
                     </div>
                 </div>
             </div>
@@ -2063,31 +2318,60 @@
 
     <div class="section-divider"></div>
 
-    <!-- ========== SIGNAL ROUTE GAME ========== -->
+    <!-- ========== GRADIENT DESCENT FITTING GAME ========== -->
     <section id="game" class="section">
         <div class="container">
             <div class="section-label">Mini Game</div>
-            <h2 class="section-heading" data-animate="split">Signal Route. Can you connect the nodes?</h2>
-            <p class="section-subheading">Route power signals from sources to receivers without crossing wires. Click a node, then click another to draw a cable.</p>
+            <h2 class="section-heading" data-animate="split">Gradient Descent. Train the model.</h2>
+            <p class="section-subheading">Adjust the weights (w₁, w₂) and bias (b) to fit the prediction line to the green training data points. Minimize the loss to achieve convergence.</p>
+            
             <div class="game-shell reveal-scroll">
                 <div class="game-toolbar">
                     <div class="game-info">
-                        <span class="game-level-badge" id="game-level">Level 1</span>
-                        <span class="game-stat">Moves: <b id="game-moves">0</b></span>
-                        <span class="game-stat">Connected: <b id="game-connected">0</b> / <b id="game-total">0</b></span>
+                        <span class="game-level-badge" id="game-level">Epoch 1: Linear</span>
+                        <span class="game-stat">Loss: <b id="game-loss" class="g-loss-value">100.0%</b></span>
+                        <span class="game-stat">Accuracy: <b id="game-accuracy">0.0%</b></span>
                     </div>
                     <div class="game-btns">
                         <button id="game-reset" class="game-btn">↺ Reset</button>
-                        <button id="game-next" class="game-btn game-btn-accent" style="display:none">Next Level →</button>
+                        <button id="game-next" class="game-btn game-btn-accent" style="display:none">Next Epoch →</button>
                     </div>
                 </div>
-                <canvas id="game-canvas" class="game-canvas"></canvas>
+                
+                <div class="game-workspace">
+                    <canvas id="game-canvas" class="game-canvas"></canvas>
+                    
+                    <div class="game-controls">
+                        <div class="control-group">
+                            <label for="slider-w1">Weight w₁ (Slope / Amp)</label>
+                            <div class="slider-wrap">
+                                <input type="range" id="slider-w1" min="-3" max="3" step="0.05" value="1">
+                                <span id="val-w1" class="slider-val">1.00</span>
+                            </div>
+                        </div>
+                        <div class="control-group" id="control-w2-group" style="display:none">
+                            <label for="slider-w2">Weight w₂ (Freq)</label>
+                            <div class="slider-wrap">
+                                <input type="range" id="slider-w2" min="-3" max="3" step="0.05" value="1">
+                                <span id="val-w2" class="slider-val">1.00</span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="slider-b">Bias b (Intercept)</label>
+                            <div class="slider-wrap">
+                                <input type="range" id="slider-b" min="-3" max="3" step="0.05" value="0">
+                                <span id="val-b" class="slider-val">0.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="game-win-overlay" id="game-win" style="display:none">
                     <div class="game-win-inner">
-                        <div class="game-win-emoji">⚡</div>
-                        <h3>Signal Routed!</h3>
-                        <p id="game-win-msg">All nodes connected in <b id="game-win-moves">0</b> moves.</p>
-                        <button id="game-next-btn" class="btn-primary" style="margin-top:1rem">Next Level →</button>
+                        <div class="game-win-emoji">🤖</div>
+                        <h3>Model Converged!</h3>
+                        <p id="game-win-msg">Training completed with loss <b id="game-win-loss">0.0%</b> in Epoch <b id="game-win-level">1</b>.</p>
+                        <button id="game-next-btn" class="btn-primary" style="margin-top:1rem">Next Epoch →</button>
                     </div>
                 </div>
             </div>
@@ -2193,6 +2477,24 @@
             </div>
         </div>
     </footer>
+
+    <!-- ========== RESUME MODAL ========== -->
+    <div id="resume-modal" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3>Curriculum Vitae</h3>
+                <div class="modal-actions">
+                    <a href="https://drive.google.com/file/d/1Rt3szXZjkfRT08xoubVnARmG8hThFRE2/view?usp=sharing" target="_blank" rel="noopener" class="modal-btn" title="Open in new tab">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                    </a>
+                    <button id="close-resume" class="modal-close-btn">&times;</button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <iframe src="https://drive.google.com/file/d/1Rt3szXZjkfRT08xoubVnARmG8hThFRE2/preview" width="100%" height="100%" frameborder="0" allow="autoplay"></iframe>
+            </div>
+        </div>
+    </div>
 
     <!-- Toast -->
     <div class="toast" id="toast">
@@ -2714,8 +3016,11 @@
                 arcHard.setAttribute('stroke-dasharray',  `${hardArc} ${circ - hardArc}`);
                 arcHard.setAttribute('transform', `rotate(${-90 + (easyFrac + medFrac) * 360} 60 60)`);
 
-                // Centre text
+                // Centre text & progress bars
                 document.getElementById('lc-center-num').textContent = total;
+                document.getElementById('lc-fill-easy').style.width = ((easy / 947) * 100) + '%';
+                document.getElementById('lc-fill-medium').style.width = ((medium / 2063) * 100) + '%';
+                document.getElementById('lc-fill-hard').style.width = ((hard / 939) * 100) + '%';
             }
 
             function setStatVal(id, val) {
@@ -2734,7 +3039,7 @@
             function renderRecent(submissions) {
                 recentList.innerHTML = '';
                 if (loadingEl) loadingEl.style.display = 'none';
-                submissions.slice(0, 6).forEach(s => {
+                submissions.slice(0, 5).forEach(s => {
                     const a = document.createElement('a');
                     a.className = 'lc-recent-item';
                     a.href = `https://leetcode.com/problems/${s.titleSlug}/`;
@@ -2821,216 +3126,247 @@
             }
         })();
 
-        // ============ SIGNAL ROUTE GAME ============
+        // ============ GRADIENT DESCENT FITTING GAME ============
         (function() {
             const canvas  = document.getElementById('game-canvas');
             if (!canvas) return;
             const ctx     = canvas.getContext('2d');
 
-            // ─── LEVELS ───────────────────────────────────────────
-            const LEVELS = [
+            const sliderW1 = document.getElementById('slider-w1');
+            const sliderW2 = document.getElementById('slider-w2');
+            const sliderB  = document.getElementById('slider-b');
+            const valW1    = document.getElementById('val-w1');
+            const valW2    = document.getElementById('val-w2');
+            const valB     = document.getElementById('val-b');
+            const w2Group  = document.getElementById('control-w2-group');
+
+            const lossEl   = document.getElementById('game-loss');
+            const accEl    = document.getElementById('game-accuracy');
+            const levelEl  = document.getElementById('game-level');
+            const nextBtn  = document.getElementById('game-next');
+            const winOverlay = document.getElementById('game-win');
+
+            // Game State
+            let epoch = 1;
+            let points = [];
+            let solved = false;
+            let w1Val = 1.0;
+            let w2Val = 1.0;
+            let bVal = 0.0;
+
+            const CONFIGS = [
                 {
-                    name: 'Level 1',
-                    grid: 6,
-                    pairs: [
-                        { color: '#4F46E5', nodes: [[0,0],[5,5]] },
-                        { color: '#10b981', nodes: [[0,5],[5,0]] },
-                    ]
+                    level: 1,
+                    name: 'Epoch 1: Linear Fit',
+                    useW2: false,
+                    target: (x) => 0.7 * x - 0.5,
+                    predict: (x, w1, w2, b) => w1 * x + b,
+                    desc: 'y = w₁ * x + b',
+                    w1Range: [-2, 2],
+                    bRange: [-2, 2],
+                    init: { w1: -1.2, w2: 1.0, b: 1.2 }
                 },
                 {
-                    name: 'Level 2',
-                    grid: 7,
-                    pairs: [
-                        { color: '#4F46E5', nodes: [[0,0],[6,6]] },
-                        { color: '#10b981', nodes: [[0,6],[6,0]] },
-                        { color: '#f59e0b', nodes: [[3,0],[3,6]] },
-                    ]
+                    level: 2,
+                    name: 'Epoch 2: Quadratic Fit',
+                    useW2: true,
+                    target: (x) => -0.4 * x * x + 0.8 * x + 0.5,
+                    predict: (x, w1, w2, b) => w1 * x * x + w2 * x + b,
+                    desc: 'y = w₁ * x² + w₂ * x + b',
+                    w1Range: [-2, 2],
+                    w2Range: [-2, 2],
+                    bRange: [-2, 2],
+                    init: { w1: 0.8, w2: -1.0, b: -0.8 }
                 },
                 {
-                    name: 'Level 3',
-                    grid: 8,
-                    pairs: [
-                        { color: '#4F46E5', nodes: [[0,0],[7,7]] },
-                        { color: '#10b981', nodes: [[0,7],[7,0]] },
-                        { color: '#f59e0b', nodes: [[0,3],[7,4]] },
-                        { color: '#ff375f', nodes: [[3,0],[4,7]] },
-                    ]
-                },
-                {
-                    name: 'Level 4',
-                    grid: 9,
-                    pairs: [
-                        { color: '#4F46E5', nodes: [[0,0],[8,8]] },
-                        { color: '#10b981', nodes: [[0,8],[8,0]] },
-                        { color: '#f59e0b', nodes: [[4,0],[4,8]] },
-                        { color: '#ff375f', nodes: [[0,4],[8,4]] },
-                        { color: '#a855f7', nodes: [[2,2],[6,6]] },
-                    ]
-                },
-                {
-                    name: 'Level 5',
-                    grid: 10,
-                    pairs: [
-                        { color: '#4F46E5', nodes: [[0,0],[9,9]] },
-                        { color: '#10b981', nodes: [[0,9],[9,0]] },
-                        { color: '#f59e0b', nodes: [[0,4],[9,5]] },
-                        { color: '#ff375f', nodes: [[4,0],[5,9]] },
-                        { color: '#a855f7', nodes: [[2,2],[7,7]] },
-                        { color: '#00b8a3', nodes: [[2,7],[7,2]] },
-                    ]
-                },
+                    level: 3,
+                    name: 'Epoch 3: Sine Wave Fit',
+                    useW2: true,
+                    target: (x) => 1.5 * Math.sin(1.3 * x) - 0.3,
+                    predict: (x, w1, w2, b) => w1 * Math.sin(w2 * x) + b,
+                    desc: 'y = w₁ * sin(w₂ * x) + b',
+                    w1Range: [-3, 3],
+                    w2Range: [-3, 3],
+                    bRange: [-2, 2],
+                    init: { w1: -0.5, w2: 0.4, b: 0.8 }
+                }
             ];
 
-            let currentLevel = 0;
-            let state = null;
+            function getActiveConfig() {
+                return CONFIGS[epoch - 1];
+            }
 
-            function CELL(x,y) { return `${x},${y}`; }
+            function generatePoints() {
+                const conf = getActiveConfig();
+                points = [];
+                const start = -2.5;
+                const end = 2.5;
+                const count = conf.level === 3 ? 20 : 15;
+                const step = (end - start) / (count - 1);
 
-            function initLevel(idx) {
-                const lv = LEVELS[idx];
-                const GRID = lv.grid;
-                const pairs = lv.pairs.map(p => ({
-                    color: p.color,
-                    a: p.nodes[0],
-                    b: p.nodes[1],
-                    path: []
-                }));
+                for (let i = 0; i < count; i++) {
+                    const x = start + i * step;
+                    const cleanY = conf.target(x);
+                    const noise = (Math.random() - 0.5) * 0.18;
+                    points.push({ x, y: cleanY + noise });
+                }
+            }
 
-                state = {
-                    grid: GRID,
-                    pairs,
-                    drawing: null,     // index of pair currently being drawn
-                    path: [],          // current live path being drawn
-                    moves: 0,
-                    won: false
-                };
+            function initGame() {
+                solved = false;
+                const conf = getActiveConfig();
+                
+                levelEl.textContent = conf.name;
+                winOverlay.style.display = 'none';
+                nextBtn.style.display = 'none';
 
-                document.getElementById('game-level').textContent    = lv.name;
-                document.getElementById('game-moves').textContent    = '0';
-                document.getElementById('game-connected').textContent = '0';
-                document.getElementById('game-total').textContent    = pairs.length;
-                document.getElementById('game-win').style.display   = 'none';
+                w2Group.style.display = conf.useW2 ? 'flex' : 'none';
 
+                sliderW1.min = conf.w1Range[0];
+                sliderW1.max = conf.w1Range[1];
+                sliderB.min = conf.bRange[0];
+                sliderB.max = conf.bRange[1];
+
+                if (conf.useW2) {
+                    sliderW2.min = conf.w2Range[0];
+                    sliderW2.max = conf.w2Range[1];
+                }
+
+                w1Val = conf.init.w1;
+                w2Val = conf.init.w2;
+                bVal  = conf.init.b;
+
+                sliderW1.value = w1Val;
+                sliderB.value = bVal;
+                if (conf.useW2) {
+                    sliderW2.value = w2Val;
+                }
+
+                updateValues();
+                generatePoints();
                 resize();
+            }
+
+            function updateValues() {
+                w1Val = parseFloat(sliderW1.value);
+                bVal  = parseFloat(sliderB.value);
+                valW1.textContent = w1Val.toFixed(2);
+                valB.textContent = bVal.toFixed(2);
+
+                const conf = getActiveConfig();
+                if (conf.useW2) {
+                    w2Val = parseFloat(sliderW2.value);
+                    valW2.textContent = w2Val.toFixed(2);
+                }
+
+                calculateMetrics();
                 draw();
             }
 
-            function cellSize() {
-                return Math.floor(canvas.width / state.grid);
-            }
+            function calculateMetrics() {
+                const conf = getActiveConfig();
+                let sumSqError = 0;
+                let sumSqTotal = 0;
+                
+                let sumY = 0;
+                points.forEach(p => sumY += p.y);
+                const meanY = sumY / points.length;
 
-            function getCellAt(px, py) {
-                const cs = cellSize();
-                return [Math.floor(px / cs), Math.floor(py / cs)];
-            }
+                points.forEach(p => {
+                    const yPred = conf.predict(p.x, w1Val, w2Val, bVal);
+                    const err = p.y - yPred;
+                    sumSqError += err * err;
+                    
+                    const dev = p.y - meanY;
+                    sumSqTotal += dev * dev;
+                });
 
-            function isEndpoint(x, y) {
-                for (let i = 0; i < state.pairs.length; i++) {
-                    const p = state.pairs[i];
-                    if ((p.a[0]===x && p.a[1]===y) || (p.b[0]===x && p.b[1]===y)) return i;
+                const mse = sumSqError / points.length;
+                const r2 = sumSqTotal > 0 ? 1 - (sumSqError / sumSqTotal) : 0;
+                const accuracyVal = Math.min(100, Math.max(0, r2 * 100));
+                const lossVal = Math.min(100, Math.max(0, mse * 100));
+
+                lossEl.textContent = lossVal.toFixed(1) + '%';
+                accEl.textContent = accuracyVal.toFixed(1) + '%';
+
+                if (lossVal < 10.0) {
+                    lossEl.classList.add('g-loss-low');
+                } else {
+                    lossEl.classList.remove('g-loss-low');
                 }
-                return -1;
-            }
 
-            function isOccupied(x, y) {
-                for (const p of state.pairs) {
-                    for (const [px,py] of p.path) {
-                        if (px===x && py===y) return true;
-                    }
+                if ((accuracyVal >= 94.0 || lossVal <= 3.5) && !solved) {
+                    solved = true;
+                    setTimeout(triggerWin, 400);
                 }
-                return false;
             }
 
-            function isConnected(pair) {
-                if (pair.path.length < 2) return false;
-                const first = pair.path[0];
-                const last  = pair.path[pair.path.length - 1];
-                const matchA = (first[0]===pair.a[0]&&first[1]===pair.a[1]) || (last[0]===pair.a[0]&&last[1]===pair.a[1]);
-                const matchB = (first[0]===pair.b[0]&&first[1]===pair.b[1]) || (last[0]===pair.b[0]&&last[1]===pair.b[1]);
-                return matchA && matchB;
+            function triggerWin() {
+                document.getElementById('game-win-loss').textContent = lossEl.textContent;
+                document.getElementById('game-win-level').textContent = epoch;
+                winOverlay.style.display = 'flex';
             }
 
-            function connectedCount() {
-                return state.pairs.filter(isConnected).length;
+            function toCanvas(x, y) {
+                const px = ((x + 3) / 6) * canvas.width;
+                const py = ((3 - y) / 6) * canvas.height;
+                return [px, py];
             }
 
             function draw() {
-                const cs = cellSize();
-                const W  = canvas.width;
-                const H  = canvas.height;
-
-                // Background
+                const W = canvas.width;
+                const H = canvas.height;
+                
                 const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
                 ctx.fillStyle = isDark ? '#131316' : '#FAFAF7';
                 ctx.fillRect(0, 0, W, H);
 
-                // Grid lines
-                ctx.strokeStyle = isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.06)';
-                ctx.lineWidth = 1;
-                for (let x = 0; x <= state.grid; x++) {
-                    ctx.beginPath(); ctx.moveTo(x*cs,0); ctx.lineTo(x*cs,H); ctx.stroke();
-                }
-                for (let y = 0; y <= state.grid; y++) {
-                    ctx.beginPath(); ctx.moveTo(0,y*cs); ctx.lineTo(W,y*cs); ctx.stroke();
-                }
+                ctx.strokeStyle = isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.08)';
+                ctx.lineWidth = 1.5;
+                ctx.setLineDash([5, 5]);
 
-                // Draw completed paths
-                for (const p of state.pairs) {
-                    if (p.path.length < 2) continue;
-                    ctx.save();
-                    ctx.strokeStyle = p.color;
-                    ctx.lineWidth = cs * 0.35;
-                    ctx.lineCap = 'round';
-                    ctx.lineJoin = 'round';
-                    ctx.globalAlpha = isConnected(p) ? 1 : 0.65;
-                    ctx.beginPath();
-                    ctx.moveTo(p.path[0][0]*cs + cs/2, p.path[0][1]*cs + cs/2);
-                    for (let i = 1; i < p.path.length; i++) {
-                        ctx.lineTo(p.path[i][0]*cs + cs/2, p.path[i][1]*cs + cs/2);
+                const [ax1, ay1] = toCanvas(-3, 0);
+                const [ax2, ay2] = toCanvas(3, 0);
+                ctx.beginPath(); ctx.moveTo(ax1, ay1); ctx.lineTo(ax2, ay2); ctx.stroke();
+
+                const [bx1, by1] = toCanvas(0, -3);
+                const [bx2, by2] = toCanvas(0, 3);
+                ctx.beginPath(); ctx.moveTo(bx1, by1); ctx.lineTo(bx2, by2); ctx.stroke();
+                ctx.setLineDash([]);
+
+                const conf = getActiveConfig();
+                ctx.save();
+                ctx.strokeStyle = solved ? '#00b8a3' : 'var(--accent)';
+                ctx.lineWidth = 3.5;
+                ctx.shadowColor = solved ? 'rgba(0,184,163,0.3)' : 'rgba(79,70,229,0.3)';
+                ctx.shadowBlur = 10;
+                ctx.beginPath();
+
+                let first = true;
+                for (let cx = -3; cx <= 3; cx += 0.05) {
+                    const cy = conf.predict(cx, w1Val, w2Val, bVal);
+                    const [px, py] = toCanvas(cx, cy);
+                    if (first) {
+                        ctx.moveTo(px, py);
+                        first = false;
+                    } else {
+                        ctx.lineTo(px, py);
                     }
-                    ctx.stroke();
-                    ctx.restore();
                 }
+                ctx.stroke();
+                ctx.restore();
 
-                // Draw live drawing path
-                if (state.drawing !== null && state.path.length >= 1) {
-                    const p = state.pairs[state.drawing];
+                points.forEach(p => {
+                    const [px, py] = toCanvas(p.x, p.y);
                     ctx.save();
-                    ctx.strokeStyle = p.color;
-                    ctx.lineWidth = cs * 0.35;
-                    ctx.lineCap = 'round';
-                    ctx.lineJoin = 'round';
-                    ctx.globalAlpha = 0.6;
+                    ctx.fillStyle = isDark ? '#10B981' : '#059669';
+                    ctx.shadowColor = '#10B981';
+                    ctx.shadowBlur = 6;
                     ctx.beginPath();
-                    ctx.moveTo(state.path[0][0]*cs + cs/2, state.path[0][1]*cs + cs/2);
-                    for (let i = 1; i < state.path.length; i++) {
-                        ctx.lineTo(state.path[i][0]*cs + cs/2, state.path[i][1]*cs + cs/2);
-                    }
-                    ctx.stroke();
+                    ctx.arc(px, py, 5.5, 0, Math.PI * 2);
+                    ctx.fill();
                     ctx.restore();
-                }
-
-                // Draw nodes
-                for (const p of state.pairs) {
-                    [p.a, p.b].forEach(([nx,ny]) => {
-                        ctx.save();
-                        ctx.fillStyle = p.color;
-                        ctx.shadowColor = p.color;
-                        ctx.shadowBlur = 8;
-                        ctx.beginPath();
-                        ctx.arc(nx*cs + cs/2, ny*cs + cs/2, cs*0.3, 0, Math.PI*2);
-                        ctx.fill();
-                        ctx.restore();
-
-                        // Inner dot
-                        ctx.save();
-                        ctx.fillStyle = isDark ? '#131316' : '#FAFAF7';
-                        ctx.beginPath();
-                        ctx.arc(nx*cs + cs/2, ny*cs + cs/2, cs*0.12, 0, Math.PI*2);
-                        ctx.fill();
-                        ctx.restore();
-                    });
-                }
+                });
             }
 
             function resize() {
@@ -3044,125 +3380,60 @@
                 }
                 const size = Math.min(width || 560, 560);
                 canvas.width  = size;
-                canvas.height = size;
+                canvas.height = Math.min(size, window.innerWidth < 768 ? 280 : 380);
                 draw();
             }
 
-            // ─── INPUT HANDLING ───────────────────────────────────
-            function getPos(e) {
-                const rect = canvas.getBoundingClientRect();
-                const scaleX = canvas.width  / rect.width;
-                const scaleY = canvas.height / rect.height;
-                if (e.touches) {
-                    return [
-                        (e.touches[0].clientX - rect.left) * scaleX,
-                        (e.touches[0].clientY - rect.top)  * scaleY
-                    ];
-                }
-                return [(e.clientX - rect.left) * scaleX, (e.clientY - rect.top) * scaleY];
-            }
-
-            function onStart(e) {
-                e.preventDefault();
-                if (state.won) return;
-                const [px, py] = getPos(e);
-                const [cx, cy] = getCellAt(px, py);
-                if (cx < 0 || cy < 0 || cx >= state.grid || cy >= state.grid) return;
-
-                const pIdx = isEndpoint(cx, cy);
-                if (pIdx === -1) return;
-
-                // Clear old path for this pair
-                state.pairs[pIdx].path = [];
-                state.drawing = pIdx;
-                state.path = [[cx, cy]];
-            }
-
-            function onMove(e) {
-                e.preventDefault();
-                if (state.drawing === null) return;
-                const [px, py] = getPos(e);
-                const [cx, cy] = getCellAt(px, py);
-                if (cx < 0 || cy < 0 || cx >= state.grid || cy >= state.grid) return;
-
-                const last = state.path[state.path.length - 1];
-                if (last[0] === cx && last[1] === cy) return;
-
-                // Must be adjacent
-                const dx = Math.abs(cx - last[0]);
-                const dy = Math.abs(cy - last[1]);
-                if (dx + dy !== 1) return;
-
-                // Check if this cell is in our own path (backtrack)
-                const inPath = state.path.findIndex(p => p[0]===cx && p[1]===cy);
-                if (inPath >= 0) {
-                    state.path = state.path.slice(0, inPath + 1);
-                    draw(); return;
-                }
-
-                // Check occupied by another path
-                if (isOccupied(cx, cy)) {
-                    const pIdxHere = isEndpoint(cx, cy);
-                    if (pIdxHere !== -1 && pIdxHere !== state.drawing) { draw(); return; }
-                    if (pIdxHere === -1) { draw(); return; }
-                }
-
-                state.path.push([cx, cy]);
-                draw();
-            }
-
-            function onEnd(e) {
-                if (state.drawing === null) return;
-                const p = state.pairs[state.drawing];
-                p.path = [...state.path];
-
-                // Snap: check if last cell is the other endpoint
-                const last = state.path[state.path.length - 1];
-                const isA = p.a[0]===last[0] && p.a[1]===last[1];
-                const isB = p.b[0]===last[0] && p.b[1]===last[1];
-                if ((isA || isB) && state.path.length > 1) {
-                    state.moves++;
-                    document.getElementById('game-moves').textContent = state.moves;
-                    document.getElementById('game-win-moves').textContent = state.moves;
-                }
-
-                state.drawing = null;
-                state.path    = [];
-
-                const cc = connectedCount();
-                document.getElementById('game-connected').textContent = cc;
-
-                if (cc === state.pairs.length) {
-                    state.won = true;
-                    setTimeout(() => {
-                        document.getElementById('game-win').style.display = 'flex';
-                    }, 400);
-                }
-                draw();
-            }
-
-            canvas.addEventListener('mousedown',  onStart);
-            canvas.addEventListener('mousemove',  onMove);
-            canvas.addEventListener('mouseup',    onEnd);
-            canvas.addEventListener('touchstart', onStart, { passive: false });
-            canvas.addEventListener('touchmove',  onMove,  { passive: false });
-            canvas.addEventListener('touchend',   onEnd);
+            sliderW1.addEventListener('input', updateValues);
+            sliderB.addEventListener('input', updateValues);
+            if (sliderW2) sliderW2.addEventListener('input', updateValues);
 
             document.getElementById('game-reset').addEventListener('click', () => {
-                initLevel(currentLevel);
+                initGame();
             });
 
             function goNext() {
-                currentLevel = (currentLevel + 1) % LEVELS.length;
-                initLevel(currentLevel);
+                epoch = (epoch % CONFIGS.length) + 1;
+                initGame();
             }
-            document.getElementById('game-next').addEventListener('click', goNext);
+
+            nextBtn.addEventListener('click', goNext);
             document.getElementById('game-next-btn').addEventListener('click', goNext);
 
             window.addEventListener('resize', resize);
+            initGame();
+        })();
 
-            // Boot
-            initLevel(0);
+        // ============ RESUME MODAL CONTROLLER ============
+        (function() {
+            const resumeModal = document.getElementById('resume-modal');
+            const closeResume = document.getElementById('close-resume');
+            const resumeTriggers = document.querySelectorAll('a[href*="drive.google.com/file/d/"]');
+
+            resumeTriggers.forEach(trigger => {
+                trigger.addEventListener('click', (e) => {
+                    if (window.innerWidth < 768) return; // Open naturally in new tab on mobile
+                    e.preventDefault();
+                    if (resumeModal) {
+                        resumeModal.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            });
+
+            if (closeResume && resumeModal) {
+                const closeModal = () => {
+                    resumeModal.classList.remove('active');
+                    document.body.style.overflow = '';
+                };
+                closeResume.addEventListener('click', closeModal);
+                resumeModal.addEventListener('click', (e) => {
+                    if (e.target === resumeModal) closeModal();
+                });
+                window.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && resumeModal.classList.contains('active')) closeModal();
+                });
+            }
         })();
 
     })();
