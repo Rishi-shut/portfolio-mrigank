@@ -1587,6 +1587,7 @@
         .lc-pill.easy   { background: rgba(0,184,163,0.12); color: #00b8a3; }
         .lc-pill.medium { background: rgba(255,192,30,0.12); color: #c98d00; }
         .lc-pill.hard   { background: rgba(255,55,95,0.12);  color: #ff375f; }
+        .lc-pill.lang   { background: var(--bg-accent); color: var(--accent); }
         .lc-item-name {
             font-size: 0.88rem;
             color: var(--text);
@@ -1730,8 +1731,6 @@
             <li><a href="#about" data-section="about">About</a></li>
             <li><a href="#skills" data-section="skills">Skills</a></li>
             <li><a href="#projects" data-section="projects">Work</a></li>
-            <li><a href="#leetcode" data-section="leetcode">LeetCode</a></li>
-            <li><a href="#game" data-section="game">Play</a></li>
             <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
         </ul>
         <div class="nav-actions">
@@ -1864,6 +1863,12 @@
                             <div class="stat-number"><span data-count="23">0</span><span class="plus">%</span></div>
                             <div class="stat-label">Efficiency Gain</div>
                         </div>
+                    </div>
+                    <div class="about-actions" style="margin-top: 2.5rem; display: flex; gap: 1rem;">
+                        <a href="https://drive.google.com/file/d/1Rt3szXZjkfRT08xoubVnARmG8hThFRE2/view?usp=sharing" target="_blank" rel="noopener" class="btn-primary" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            View Resume
+                        </a>
                     </div>
                 </div>
             </div>
@@ -2549,6 +2554,32 @@
             scrollTrigger: { trigger: '#projects', start: 'top 75%' }
         });
 
+        // -- LeetCode dashboard --
+        gsap.set('.lc-dashboard', { y: 40, opacity: 0 });
+        gsap.to('.lc-dashboard', {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: 'power3.out',
+            scrollTrigger: { trigger: '#leetcode', start: 'top 75%' }
+        });
+
+        // -- Game shell --
+        gsap.set('.game-shell', { y: 40, opacity: 0 });
+        gsap.to('.game-shell', {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: 'power3.out',
+            scrollTrigger: {
+                trigger: '#game',
+                start: 'top 75%',
+                onEnter: () => {
+                    window.dispatchEvent(new Event('resize'));
+                }
+            }
+        });
+
         // -- Contact section --
         gsap.set('.contact-info', { x: -40, opacity: 0 });
         gsap.set('.contact-form', { x: 40, opacity: 0 });
@@ -2702,17 +2733,19 @@
 
             function renderRecent(submissions) {
                 recentList.innerHTML = '';
-                if (!loadingEl) return;
-                loadingEl.style.display = 'none';
+                if (loadingEl) loadingEl.style.display = 'none';
                 submissions.slice(0, 6).forEach(s => {
-                    const diff = (s.difficulty || 'medium').toLowerCase();
                     const a = document.createElement('a');
                     a.className = 'lc-recent-item';
                     a.href = `https://leetcode.com/problems/${s.titleSlug}/`;
                     a.target = '_blank';
                     a.rel = 'noopener';
+
+                    const pillText = s.lang ? s.lang.charAt(0).toUpperCase() + s.lang.slice(1) : 'Accepted';
+                    const pillClass = s.lang ? 'lang' : 'easy';
+
                     a.innerHTML = `
-                        <span class="lc-pill ${diff}">${diff.charAt(0).toUpperCase() + diff.slice(1)}</span>
+                        <span class="lc-pill ${pillClass}">${pillText}</span>
                         <span class="lc-item-name">${s.title}</span>
                         <span class="lc-item-time">${s.timestamp ? timeAgo(parseInt(s.timestamp)) : ''}</span>
                     `;
@@ -2720,62 +2753,71 @@
                 });
             }
 
-            // Using leetcode-stats-api (public, no key needed)
-            const PROXY = `https://leetcode-stats-api.herokuapp.com/${LC_USERNAME}`;
-            const PROXY2 = `https://alfa-leetcode-api.onrender.com/${LC_USERNAME}/solved`;
+            const API_URL = `https://leetcode-api-faisalshohag.vercel.app/${LC_USERNAME}`;
 
             try {
-                const [statsRes, solvedRes] = await Promise.allSettled([
-                    fetch(PROXY),
-                    fetch(`https://alfa-leetcode-api.onrender.com/userProfile/${LC_USERNAME}`)
-                ]);
+                const res = await fetch(API_URL);
+                if (!res.ok) throw new Error('API request failed');
+                const d = await res.json();
 
-                let easy = 0, medium = 0, hard = 0, total = 0, rank = '—';
-
-                if (statsRes.status === 'fulfilled' && statsRes.value.ok) {
-                    const d = await statsRes.value.json();
-                    if (d.status !== 'error') {
-                        easy   = d.easySolved   ?? 0;
-                        medium = d.mediumSolved  ?? 0;
-                        hard   = d.hardSolved    ?? 0;
-                        total  = d.totalSolved   ?? easy + medium + hard;
-                        rank   = d.ranking ? `#${d.ranking.toLocaleString()}` : '—';
-
-                        setStatVal('lc-total',  total);
-                        setStatVal('lc-easy',   easy);
-                        setStatVal('lc-medium', medium);
-                        setStatVal('lc-hard',   hard);
-                        setStatVal('lc-rank',   rank);
-                        animateDonut(easy, medium, hard);
-                    }
+                if (d.message || d.error || !d.totalSolved) {
+                    throw new Error(d.message || 'Invalid stats data');
                 }
 
-                // Try fetching recent from alfa-leetcode-api
-                if (solvedRes.status === 'fulfilled' && solvedRes.value.ok) {
-                    const d = await solvedRes.value.json();
-                    const recents = d.recentAcSubmissionList || d.submissionCalendar || null;
-                    if (Array.isArray(recents) && recents.length) {
-                        renderRecent(recents);
+                const easy   = d.easySolved   ?? 0;
+                const medium = d.mediumSolved  ?? 0;
+                const hard   = d.hardSolved    ?? 0;
+                const total  = d.totalSolved   ?? (easy + medium + hard);
+                const rank   = d.ranking ? `#${d.ranking.toLocaleString()}` : '—';
+
+                setStatVal('lc-total',  total);
+                setStatVal('lc-easy',   easy);
+                setStatVal('lc-medium', medium);
+                setStatVal('lc-hard',   hard);
+                setStatVal('lc-rank',   rank);
+                animateDonut(easy, medium, hard);
+
+                if (Array.isArray(d.recentSubmissions) && d.recentSubmissions.length) {
+                    const accepted = d.recentSubmissions.filter(s => s.statusDisplay === 'Accepted');
+                    if (accepted.length > 0) {
+                        renderRecent(accepted);
                     } else {
-                        // Fall through to placeholder
-                        throw new Error('no recent');
+                        renderRecent(d.recentSubmissions);
                     }
                 } else {
-                    throw new Error('no recent api');
+                    throw new Error('no submissions');
                 }
 
-            } catch {
-                // If APIs fail, show static placeholder rows
+            } catch (err) {
+                console.warn('LeetCode fetch error, using fallback:', err);
                 if (loadingEl) loadingEl.style.display = 'none';
+                
+                const fallbackEasy = 10;
+                const fallbackMed = 0;
+                const fallbackHard = 0;
+                const fallbackTotal = 10;
+                const fallbackRank = '#5,000,001';
+
+                setStatVal('lc-total',  fallbackTotal);
+                setStatVal('lc-easy',   fallbackEasy);
+                setStatVal('lc-medium', fallbackMed);
+                setStatVal('lc-hard',   fallbackHard);
+                setStatVal('lc-rank',   fallbackRank);
+                animateDonut(fallbackEasy, fallbackMed, fallbackHard);
+
                 const fallback = [
-                    { title: 'Two Sum',                 difficulty: 'Easy',   titleSlug: 'two-sum',                  timestamp: '' },
-                    { title: 'Longest Palindrome',      difficulty: 'Medium', titleSlug: 'longest-palindromic-substring', timestamp: '' },
-                    { title: 'Merge k Sorted Lists',    difficulty: 'Hard',   titleSlug: 'merge-k-sorted-lists',     timestamp: '' },
-                    { title: 'Binary Search',           difficulty: 'Easy',   titleSlug: 'binary-search',            timestamp: '' },
-                    { title: 'Coin Change',             difficulty: 'Medium', titleSlug: 'coin-change',              timestamp: '' },
+                    { title: 'Word Pattern',            lang: 'java',   titleSlug: 'word-pattern',                  timestamp: '1780407256' },
+                    { title: 'Contains Duplicate',      lang: 'java',   titleSlug: 'contains-duplicate',            timestamp: '1780405158' },
+                    { title: 'Set Mismatch',            lang: 'java',   titleSlug: 'set-mismatch',                  timestamp: '1780404470' },
+                    { title: 'Isomorphic Strings',      lang: 'java',   titleSlug: 'isomorphic-strings',            timestamp: '1780387003' },
+                    { title: 'Decode the Message',      lang: 'java',   titleSlug: 'decode-the-message',            timestamp: '1780320714' },
+                    { title: 'Jewels and Stones',       lang: 'java',   titleSlug: 'jewels-and-stones',             timestamp: '1780314268' },
                 ];
                 renderRecent(fallback);
-                if (errorEl) { errorEl.style.display = 'block'; }
+                if (errorEl) { 
+                    errorEl.textContent = 'Showing cached LeetCode data.';
+                    errorEl.style.display = 'block'; 
+                }
             }
         })();
 
@@ -2993,7 +3035,14 @@
 
             function resize() {
                 const container = canvas.parentElement;
-                const size = Math.min(container.clientWidth, 560);
+                let width = container.clientWidth;
+                if (!width) {
+                    const mainContainer = container.closest('.container');
+                    if (mainContainer) {
+                        width = mainContainer.clientWidth - 40;
+                    }
+                }
+                const size = Math.min(width || 560, 560);
                 canvas.width  = size;
                 canvas.height = size;
                 draw();
