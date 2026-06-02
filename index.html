@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio of a Product Designer & Creative Developer — building polished digital experiences with purpose and craft.">
-    <title>Mrigank — Product Designer & Creative Developer</title>
+    <meta name="description" content="Portfolio of Mrigank Singh — Data Analyst & ML Engineer based in Delhi/Ghaziabad, India. Building intelligent systems that turn raw data into real impact.">
+    <title>Mrigank Singh — Data Analyst & ML Engineer</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap');
 
@@ -929,187 +929,6 @@
             display: flex;
         }
 
-        /* Mockup Alpha Details */
-        .mockup-alpha {
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 1rem 0.8rem;
-        }
-
-        .furniture-preview {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-end;
-            width: 100%;
-            height: 70px;
-            position: relative;
-        }
-
-        .sofa-back {
-            width: 70px;
-            height: 32px;
-            background: var(--accent);
-            border-radius: 8px 8px 0 0;
-            opacity: 0.85;
-            transition: background var(--transition);
-        }
-
-        .sofa-cushions {
-            display: flex;
-            gap: 2px;
-            margin-top: -8px;
-        }
-
-        .sofa-cushions .cushion {
-            width: 34px;
-            height: 16px;
-            background: var(--accent);
-            border-radius: 4px;
-            box-shadow: inset 0 -2px 0 rgba(0,0,0,0.1);
-            transition: background var(--transition);
-        }
-
-        .sofa-base {
-            width: 76px;
-            height: 6px;
-            background: var(--text);
-            border-radius: 3px;
-            margin-top: 3px;
-        }
-
-        .furniture-controls {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            width: 100%;
-            justify-content: center;
-            border-top: 1px solid var(--border-light);
-            padding-top: 8px;
-        }
-
-        .furniture-controls .dot-control {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            cursor: pointer;
-            border: 1.5px solid transparent;
-            transition: var(--transition);
-        }
-
-        .furniture-controls .dot-control.active {
-            border-color: var(--text);
-            transform: scale(1.2);
-        }
-
-        .furniture-controls .price-pill {
-            margin-left: auto;
-            background: var(--bg);
-            color: var(--text);
-            font-size: 0.65rem;
-            font-weight: 700;
-            padding: 1px 6px;
-            border-radius: 50px;
-        }
-
-        /* Mockup Beta Details */
-        .mockup-beta {
-            flex-direction: column;
-            justify-content: flex-start;
-            gap: 8px;
-            padding: 0.8rem;
-        }
-
-        .ai-chat-bubble {
-            max-width: 85%;
-            padding: 4px 10px;
-            font-size: 0.65rem;
-            border-radius: 10px;
-            line-height: 1.3;
-        }
-
-        .ai-chat-bubble.user {
-            background: var(--bg);
-            color: var(--text-secondary);
-            border-radius: 10px 10px 0 10px;
-            align-self: flex-end;
-            border: 1px solid var(--border-light);
-        }
-
-        .ai-chat-bubble.ai {
-            background: var(--bg-accent);
-            color: var(--accent);
-            border-radius: 10px 10px 10px 0;
-            align-self: flex-start;
-            display: flex;
-            gap: 6px;
-            align-items: flex-start;
-            width: 85%;
-        }
-
-        .ai-sparkle {
-            font-size: 0.75rem;
-            animation: spinSparkle 4s linear infinite;
-        }
-
-        @keyframes spinSparkle {
-            0% { transform: rotate(0); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .ai-lines {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 3px;
-            padding-top: 3px;
-        }
-
-        .ai-lines .ai-line {
-            height: 4px;
-            background: var(--accent);
-            opacity: 0.25;
-            border-radius: 2px;
-        }
-
-        .ai-lines .ai-line.select {
-            width: 100%;
-            background: var(--accent);
-            opacity: 0.7;
-            height: 5px;
-        }
-
-        .ai-lines .ai-line.short {
-            width: 60%;
-        }
-
-        .ai-input-bar {
-            margin-top: auto;
-            border: 1px solid var(--border);
-            border-radius: 50px;
-            padding: 2px 4px 2px 8px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 0.62rem;
-            color: var(--text-light);
-            background: var(--bg-white);
-        }
-
-        .ai-input-bar .input-send {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background: var(--text);
-            color: var(--bg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.5rem;
-            cursor: pointer;
-        }
-
         /* Mockup Gamma Details */
         .mockup-gamma {
             flex-direction: column;
@@ -1618,6 +1437,279 @@
                 flex-direction: column;
                 text-align: center;
             }
+
+        /* ========== RESUME BUTTON ========== */
+        .btn-resume {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.88rem 1.4rem;
+            background: transparent;
+            color: var(--accent);
+            border: 1.5px solid var(--accent-light);
+            border-radius: 50px;
+            font-family: var(--font-body);
+            font-weight: 500;
+            font-size: 0.88rem;
+            transition: all var(--transition);
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .btn-resume:hover {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* ========== LEETCODE DASHBOARD ========== */
+        #leetcode { background: var(--bg-white); }
+
+        .lc-dashboard {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .lc-stats-row {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
+        }
+
+        .lc-stat-card {
+            background: var(--bg);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            transition: all var(--transition);
+        }
+        .lc-stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--accent-light);
+        }
+        .lc-stat-icon { font-size: 1.3rem; margin-bottom: 0.5rem; }
+        .lc-stat-val {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1;
+        }
+        .lc-stat-label {
+            font-size: 0.72rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-top: 0.3rem;
+        }
+
+        .lc-body {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .lc-donut-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .lc-donut { width: 150px; height: 150px; }
+        .lc-username-wrap {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+        .lc-at { color: var(--accent); }
+        .lc-ext-link {
+            color: var(--text-light);
+            display: inline-flex;
+            align-items: center;
+            transition: color var(--transition);
+        }
+        .lc-ext-link:hover { color: var(--accent); }
+
+        .lc-recent { flex: 1; }
+        .lc-recent-label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+        .lc-recent-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+        .lc-skeleton {
+            height: 44px;
+            background: var(--border-light);
+            border-radius: var(--radius-sm);
+            animation: lcPulse 1.4s ease-in-out infinite;
+        }
+        @keyframes lcPulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        .lc-recent-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.7rem 1rem;
+            background: var(--bg);
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-light);
+            transition: all var(--transition);
+            text-decoration: none;
+        }
+        .lc-recent-item:hover {
+            border-color: var(--accent-light);
+            transform: translateX(4px);
+        }
+        .lc-pill {
+            padding: 0.15rem 0.55rem;
+            border-radius: 50px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        .lc-pill.easy   { background: rgba(0,184,163,0.12); color: #00b8a3; }
+        .lc-pill.medium { background: rgba(255,192,30,0.12); color: #c98d00; }
+        .lc-pill.hard   { background: rgba(255,55,95,0.12);  color: #ff375f; }
+        .lc-item-name {
+            font-size: 0.88rem;
+            color: var(--text);
+            font-weight: 500;
+            flex: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .lc-item-time { font-size: 0.72rem; color: var(--text-light); flex-shrink: 0; }
+        .lc-loading, .lc-error {
+            font-size: 0.82rem;
+            color: var(--text-light);
+            padding: 0.6rem 0;
+        }
+        .lc-error { color: #ff375f; }
+
+        /* ========== SIGNAL ROUTE GAME ========== */
+        .game-shell {
+            background: var(--bg-white);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+        }
+        .game-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border-light);
+            background: var(--bg);
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+        .game-info { display: flex; align-items: center; gap: 1.4rem; flex-wrap: wrap; }
+        .game-level-badge {
+            padding: 0.3rem 0.9rem;
+            background: var(--accent);
+            color: #fff;
+            border-radius: 50px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+        .game-stat {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+        .game-stat b { color: var(--text); }
+        .game-btns { display: flex; gap: 0.6rem; }
+        .game-btn {
+            padding: 0.5rem 1.2rem;
+            border: 1.5px solid var(--border);
+            border-radius: 50px;
+            background: transparent;
+            color: var(--text);
+            font-family: var(--font-body);
+            font-size: 0.82rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--transition);
+        }
+        .game-btn:hover { border-color: var(--text); background: var(--text); color: var(--bg); }
+        .game-btn-accent { background: var(--accent); color: #fff; border-color: var(--accent); }
+        .game-btn-accent:hover { background: var(--accent-hover); border-color: var(--accent-hover); color: #fff; }
+        .game-canvas {
+            display: block;
+            width: 100%;
+            cursor: crosshair;
+            touch-action: none;
+        }
+        .game-win-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.55);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+        .game-win-inner {
+            background: var(--bg-white);
+            border-radius: var(--radius-lg);
+            padding: 3rem 4rem;
+            text-align: center;
+            box-shadow: var(--shadow-xl);
+        }
+        .game-win-emoji { font-size: 3rem; margin-bottom: 1rem; }
+        .game-win-inner h3 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+        .game-win-inner p { color: var(--text-secondary); font-size: 1rem; }
+
+        /* ========== CONTACT NOTE ========== */
+        .contact-note {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            padding: 0.8rem 1rem;
+            background: var(--bg-accent);
+            border-radius: var(--radius-sm);
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        .contact-note svg { flex-shrink: 0; margin-top: 1px; color: var(--accent); }
+
+        /* ========== NEW RESPONSIVE RULES ========== */
+        @media (max-width: 1024px) {
+            .lc-stats-row { grid-template-columns: repeat(3, 1fr); }
+            .lc-body { grid-template-columns: 1fr; }
+            .lc-donut-wrap { flex-direction: row; align-items: center; gap: 2rem; }
+        }
+        @media (max-width: 768px) {
+            .lc-stats-row { grid-template-columns: repeat(2, 1fr); }
+            .hero-actions { flex-wrap: wrap; }
+            .btn-resume { width: 100%; justify-content: center; }
         }
     </style>
 </head>
@@ -1638,6 +1730,8 @@
             <li><a href="#about" data-section="about">About</a></li>
             <li><a href="#skills" data-section="skills">Skills</a></li>
             <li><a href="#projects" data-section="projects">Work</a></li>
+            <li><a href="#leetcode" data-section="leetcode">LeetCode</a></li>
+            <li><a href="#game" data-section="game">Play</a></li>
             <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
         </ul>
         <div class="nav-actions">
@@ -1671,28 +1765,32 @@
                 <div class="hero-text">
                     <div class="hero-badge">
                         <div class="pulse"></div>
-                        Available for freelance work
+                        Open to opportunities
                     </div>
                     <h1 class="hero-name">
-                        I craft<br>
-                        <span class="accent-text">digital</span><br>
-                        experiences.
+                        I turn<br>
+                        <span class="accent-text">data</span><br>
+                        into insight.
                     </h1>
-                    <p class="hero-tagline">Product Designer & Creative Developer helping brands tell their story through purposeful design and clean code.</p>
+                    <p class="hero-tagline">Data Analyst & ML Engineer based in Delhi, India — building models that detect patterns, prevent fraud, and drive decisions at scale.</p>
                     <div class="hero-actions">
                         <a href="#projects" class="btn-primary">
                             View Projects
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                         </a>
                         <a href="#contact" class="btn-secondary">Get in Touch</a>
+                        <a href="https://drive.google.com/file/d/1Rt3szXZjkfRT08xoubVnARmG8hThFRE2/view?usp=sharing" target="_blank" rel="noopener" class="btn-resume" id="resume-btn" aria-label="View Resume">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Resume
+                        </a>
                     </div>
                 </div>
                 <div class="hero-visual" id="hero-visual">
                     <div class="hero-visual-pattern" id="hero-pattern"></div>
                     <div class="hero-visual-inner">
                         <div class="avatar-large">M</div>
-                        <div class="visual-title">Mrigank</div>
-                        <div class="visual-subtitle">Product Designer & Developer</div>
+                        <div class="visual-title">Mrigank Singh</div>
+                        <div class="visual-subtitle">Data Analyst & ML Engineer</div>
                         <div class="visual-stats">
                             <div class="v-stat">
                                 <strong>50+</strong>
@@ -1708,9 +1806,9 @@
                             </div>
                         </div>
                         <div class="visual-tags">
-                            <span>Design</span>
-                            <span>Development</span>
-                            <span>Branding</span>
+                            <span>Python</span>
+                            <span>ML</span>
+                            <span>Analytics</span>
                         </div>
                     </div>
                 </div>
@@ -1733,38 +1831,38 @@
                         <div class="placeholder-avatar">M</div>
                     </div>
                     <div class="float-card card-1">
-                        <div class="fc-icon indigo">🎨</div>
+                        <div class="fc-icon indigo">📊</div>
                         <div>
-                            <div style="font-size:0.72rem;color:var(--text-light);">Specialty</div>
-                            <div>UI/UX Design</div>
+                            <div style="font-size:0.72rem;color:var(--text-light);">Focus</div>
+                            <div>Data Analytics</div>
                         </div>
                     </div>
                     <div class="float-card card-2">
-                        <div class="fc-icon amber">⚡</div>
+                        <div class="fc-icon amber">🤖</div>
                         <div>
-                            <div style="font-size:0.72rem;color:var(--text-light);">Experience</div>
-                            <div>5+ Years</div>
+                            <div style="font-size:0.72rem;color:var(--text-light);">Expertise</div>
+                            <div>Machine Learning</div>
                         </div>
                     </div>
                 </div>
                 <div class="about-content reveal-scroll">
                     <div class="section-label">About Me</div>
-                    <h2 class="section-heading" data-animate="split">A designer who codes & a developer who designs.</h2>
+                    <h2 class="section-heading" data-animate="split">Data analyst. ML engineer. Problem solver.</h2>
                     <p class="about-bio">
-                        I'm a multidisciplinary designer and developer with a passion for creating digital experiences that feel intuitive and alive. With years of experience spanning branding, UI/UX, and creative development, I transform ambitious ideas into polished products that captivate users and drive meaningful results.
+                        I'm Mrigank Singh, a Data Analyst & ML Engineer based in Ghaziabad / Delhi, India. I specialize in building machine learning models, performing deep-dive data analysis, and translating complex datasets into actionable insights. Whether it's detecting financial fraud with 87% accuracy or engineering features that cut false positives by 16%, I bring rigour and curiosity to every problem.
                     </p>
                     <div class="about-stats">
                         <div class="stat">
-                            <div class="stat-number"><span data-count="50">0</span><span class="plus">+</span></div>
-                            <div class="stat-label">Projects Done</div>
+                            <div class="stat-number"><span data-count="87">0</span><span class="plus">%</span></div>
+                            <div class="stat-label">Model Accuracy</div>
                         </div>
                         <div class="stat">
-                            <div class="stat-number"><span data-count="30">0</span><span class="plus">+</span></div>
-                            <div class="stat-label">Happy Clients</div>
+                            <div class="stat-number"><span data-count="16">0</span><span class="plus">%</span></div>
+                            <div class="stat-label">False Positive Reduction</div>
                         </div>
                         <div class="stat">
-                            <div class="stat-number"><span data-count="5">0</span><span class="plus">+</span></div>
-                            <div class="stat-label">Years Exp.</div>
+                            <div class="stat-number"><span data-count="23">0</span><span class="plus">%</span></div>
+                            <div class="stat-label">Efficiency Gain</div>
                         </div>
                     </div>
                 </div>
@@ -1779,42 +1877,42 @@
         <div class="container">
             <div class="section-label">Skills & Expertise</div>
             <h2 class="section-heading" data-animate="split">Tools & technologies I work with.</h2>
-            <p class="section-subheading">Combining design thinking with technical execution to build products that are both beautiful and functional.</p>
+            <p class="section-subheading">From raw data to deployed models — combining statistical rigour with engineering skill to build systems that work in the real world.</p>
             <div class="skills-grid">
                 <div class="skill-card reveal-scroll">
-                    <div class="skill-icon bg-indigo">🎨</div>
-                    <div class="skill-name">Figma</div>
-                    <div class="skill-desc">Interface design, prototyping, and design systems.</div>
-                    <div class="skill-bar"><div class="skill-bar-fill" data-width="95"></div></div>
+                    <div class="skill-icon bg-indigo">🐍</div>
+                    <div class="skill-name">Python</div>
+                    <div class="skill-desc">Pandas, NumPy, Scikit-learn, data wrangling &amp; ML pipelines.</div>
+                    <div class="skill-bar"><div class="skill-bar-fill" data-width="92"></div></div>
                 </div>
                 <div class="skill-card reveal-scroll">
-                    <div class="skill-icon bg-amber">⚛️</div>
-                    <div class="skill-name">React</div>
-                    <div class="skill-desc">Component-based UIs with modern state management.</div>
-                    <div class="skill-bar"><div class="skill-bar-fill" data-width="90"></div></div>
-                </div>
-                <div class="skill-card reveal-scroll">
-                    <div class="skill-icon bg-emerald">🧊</div>
-                    <div class="skill-name">Three.js</div>
-                    <div class="skill-desc">Interactive 3D visuals and immersive web experiences.</div>
-                    <div class="skill-bar"><div class="skill-bar-fill" data-width="80"></div></div>
-                </div>
-                <div class="skill-card reveal-scroll">
-                    <div class="skill-icon bg-rose">🎬</div>
-                    <div class="skill-name">Motion Design</div>
-                    <div class="skill-desc">Micro-interactions, scroll animations, and transitions.</div>
+                    <div class="skill-icon bg-amber">🤖</div>
+                    <div class="skill-name">Machine Learning</div>
+                    <div class="skill-desc">Classification, regression, feature engineering, model tuning.</div>
                     <div class="skill-bar"><div class="skill-bar-fill" data-width="88"></div></div>
                 </div>
                 <div class="skill-card reveal-scroll">
-                    <div class="skill-icon bg-sky">✦</div>
-                    <div class="skill-name">Branding</div>
-                    <div class="skill-desc">Visual identity, logo design, and brand strategy.</div>
-                    <div class="skill-bar"><div class="skill-bar-fill" data-width="85"></div></div>
+                    <div class="skill-icon bg-emerald">📊</div>
+                    <div class="skill-name">Data Analysis</div>
+                    <div class="skill-desc">EDA, statistical analysis, Matplotlib, Seaborn, Plotly.</div>
+                    <div class="skill-bar"><div class="skill-bar-fill" data-width="90"></div></div>
                 </div>
                 <div class="skill-card reveal-scroll">
-                    <div class="skill-icon bg-violet">🌐</div>
-                    <div class="skill-name">WebGL</div>
-                    <div class="skill-desc">GPU-accelerated graphics and shader programming.</div>
+                    <div class="skill-icon bg-rose">🗄️</div>
+                    <div class="skill-name">SQL</div>
+                    <div class="skill-desc">Complex queries, joins, window functions, database design.</div>
+                    <div class="skill-bar"><div class="skill-bar-fill" data-width="82"></div></div>
+                </div>
+                <div class="skill-card reveal-scroll">
+                    <div class="skill-icon bg-sky">📈</div>
+                    <div class="skill-name">Power BI / Tableau</div>
+                    <div class="skill-desc">Interactive dashboards, KPIs, and business intelligence.</div>
+                    <div class="skill-bar"><div class="skill-bar-fill" data-width="78"></div></div>
+                </div>
+                <div class="skill-card reveal-scroll">
+                    <div class="skill-icon bg-violet">☁️</div>
+                    <div class="skill-name">Model Deployment</div>
+                    <div class="skill-desc">Flask, Render, REST APIs — taking models to production.</div>
                     <div class="skill-bar"><div class="skill-bar-fill" data-width="75"></div></div>
                 </div>
             </div>
@@ -1827,93 +1925,11 @@
     <section id="projects" class="section">
         <div class="container">
             <div class="section-label">Featured Work</div>
-            <h2 class="section-heading" data-animate="split">Selected projects I'm proud of.</h2>
-            <p class="section-subheading">A curated selection of work that showcases my approach to design and development.</p>
-            <div class="projects-grid">
+            <h2 class="section-heading" data-animate="split">Projects built with real data, real impact.</h2>
+            <p class="section-subheading">From model training to live deployment — end-to-end ML systems solving real problems.</p>
+            <div class="projects-grid" style="grid-template-columns: 1fr; max-width: 720px; margin: 0 auto;">
                 <div class="project-card reveal-scroll">
-                    <div class="card-image" style="background: var(--bg-accent);">
-                        <div class="card-image-bg">
-                            <div class="project-mockup">
-                                <div class="mockup-bar">
-                                    <div class="dot red"></div>
-                                    <div class="dot yellow"></div>
-                                    <div class="dot green"></div>
-                                </div>
-                                <div class="mockup-body mockup-alpha">
-                                    <div class="furniture-preview">
-                                        <div class="sofa-back"></div>
-                                        <div class="sofa-cushions">
-                                            <div class="cushion"></div>
-                                            <div class="cushion"></div>
-                                        </div>
-                                        <div class="sofa-base"></div>
-                                    </div>
-                                    <div class="furniture-controls">
-                                        <span class="dot-control active" style="background-color: #4F46E5;"></span>
-                                        <span class="dot-control" style="background-color: #D97706;"></span>
-                                        <span class="dot-control" style="background-color: #10B981;"></span>
-                                        <div class="price-pill">$1,299</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="card-category">Web Development</div>
-                        <h3 class="card-title">Project Alpha</h3>
-                        <p class="card-desc">An immersive 3D product configurator for a luxury furniture brand with real-time rendering.</p>
-                        <div class="card-footer">
-                            <div class="card-tags">
-                                <span>Three.js</span>
-                                <span>React</span>
-                                <span>WebGL</span>
-                            </div>
-                            <a href="#" class="card-link">View →</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card reveal-scroll">
-                    <div class="card-image" style="background: var(--warm-light);">
-                        <div class="card-image-bg">
-                            <div class="project-mockup">
-                                <div class="mockup-bar">
-                                    <div class="dot red"></div>
-                                    <div class="dot yellow"></div>
-                                    <div class="dot green"></div>
-                                </div>
-                                <div class="mockup-body mockup-beta">
-                                    <div class="ai-chat-bubble user">Generate brand copy</div>
-                                    <div class="ai-chat-bubble ai">
-                                        <div class="ai-sparkle">✦</div>
-                                        <div class="ai-lines">
-                                            <div class="ai-line select"></div>
-                                            <div class="ai-line short"></div>
-                                        </div>
-                                    </div>
-                                    <div class="ai-input-bar">
-                                        <div class="input-text">Ask AI...</div>
-                                        <div class="input-send">✦</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="card-category">Branding</div>
-                        <h3 class="card-title">Project Beta</h3>
-                        <p class="card-desc">A motion-rich brand identity and marketing site for an AI startup with scroll storytelling.</p>
-                        <div class="card-footer">
-                            <div class="card-tags">
-                                <span>GSAP</span>
-                                <span>Figma</span>
-                                <span>Branding</span>
-                            </div>
-                            <a href="#" class="card-link">View →</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card reveal-scroll">
-                    <div class="card-image" style="background: #D1FAE5;">
+                    <div class="card-image" style="background: linear-gradient(135deg, #e0e7ff 0%, #f0fdf4 100%);">
                         <div class="card-image-bg">
                             <div class="project-mockup">
                                 <div class="mockup-bar">
@@ -1923,24 +1939,24 @@
                                 </div>
                                 <div class="mockup-body mockup-gamma">
                                     <div class="gamma-header">
-                                        <div class="gamma-title">Analytics</div>
-                                        <div class="gamma-period">Monthly</div>
+                                        <div class="gamma-title">Fraud Detection</div>
+                                        <div class="gamma-period">Live ✓</div>
                                     </div>
                                     <div class="gamma-chart">
-                                        <div class="chart-bar" data-height="65"></div>
-                                        <div class="chart-bar" data-height="85"></div>
-                                        <div class="chart-bar" data-height="45"></div>
-                                        <div class="chart-bar" data-height="95"></div>
+                                        <div class="chart-bar" data-height="55"></div>
+                                        <div class="chart-bar" data-height="87"></div>
+                                        <div class="chart-bar" data-height="40"></div>
+                                        <div class="chart-bar" data-height="92"></div>
                                         <div class="chart-bar" data-height="70"></div>
                                     </div>
                                     <div class="gamma-metrics">
                                         <div class="g-metric">
-                                            <span>Sales</span>
-                                            <strong>+24%</strong>
+                                            <span>Accuracy</span>
+                                            <strong>87%</strong>
                                         </div>
                                         <div class="g-metric">
-                                            <span>Users</span>
-                                            <strong>12.8k</strong>
+                                            <span>FP Cut</span>
+                                            <strong>-16%</strong>
                                         </div>
                                     </div>
                                 </div>
@@ -1948,17 +1964,125 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <div class="card-category">Dashboard</div>
-                        <h3 class="card-title">Project Gamma</h3>
-                        <p class="card-desc">A data visualization dashboard with real-time feeds, animated charts, and clean aesthetics.</p>
+                        <div class="card-category">Machine Learning · Deployed</div>
+                        <h3 class="card-title">Credit Card Fraud Detection</h3>
+                        <p class="card-desc">Logistic regression model achieving 87% accuracy in predicting credit card fraud. Reduced false positives by 16% through feature engineering &amp; hyper-parameter tuning. Applied under-sampling and ensemble methods to address class imbalance — improving performance by 15% and efficiency by 23%.</p>
                         <div class="card-footer">
                             <div class="card-tags">
-                                <span>D3.js</span>
-                                <span>React</span>
-                                <span>Motion</span>
+                                <span>Python</span>
+                                <span>Scikit-learn</span>
+                                <span>Flask</span>
+                                <span>Render</span>
                             </div>
-                            <a href="#" class="card-link">View →</a>
+                            <a href="https://credit-card-fraud-l06p.onrender.com/" target="_blank" rel="noopener" class="card-link">Live Demo →</a>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ========== LEETCODE ========== -->
+    <section id="leetcode" class="section">
+        <div class="container">
+            <div class="section-label">Problem Solving</div>
+            <h2 class="section-heading" data-animate="split">LeetCode. Every day, a sharper blade.</h2>
+            <p class="section-subheading">Tracking consistency, difficulty distribution, and streaks across algorithmic challenges.</p>
+
+            <div class="lc-dashboard reveal-scroll">
+                <!-- Top stats row -->
+                <div class="lc-stats-row">
+                    <div class="lc-stat-card lc-total">
+                        <div class="lc-stat-icon">⚡</div>
+                        <div class="lc-stat-val" id="lc-total">—</div>
+                        <div class="lc-stat-label">Total Solved</div>
+                    </div>
+                    <div class="lc-stat-card lc-easy">
+                        <div class="lc-stat-icon" style="color:#00b8a3">●</div>
+                        <div class="lc-stat-val" id="lc-easy">—</div>
+                        <div class="lc-stat-label">Easy</div>
+                    </div>
+                    <div class="lc-stat-card lc-medium">
+                        <div class="lc-stat-icon" style="color:#ffc01e">●</div>
+                        <div class="lc-stat-val" id="lc-medium">—</div>
+                        <div class="lc-stat-label">Medium</div>
+                    </div>
+                    <div class="lc-stat-card lc-hard">
+                        <div class="lc-stat-icon" style="color:#ff375f">●</div>
+                        <div class="lc-stat-val" id="lc-hard">—</div>
+                        <div class="lc-stat-label">Hard</div>
+                    </div>
+                    <div class="lc-stat-card lc-rank">
+                        <div class="lc-stat-icon">🏆</div>
+                        <div class="lc-stat-val" id="lc-rank">—</div>
+                        <div class="lc-stat-label">Global Rank</div>
+                    </div>
+                </div>
+
+                <!-- Difficulty donut + recent problems -->
+                <div class="lc-body">
+                    <div class="lc-donut-wrap">
+                        <svg id="lc-donut" viewBox="0 0 120 120" class="lc-donut">
+                            <circle cx="60" cy="60" r="48" fill="none" stroke="var(--border)" stroke-width="16"/>
+                            <circle id="lc-arc-easy"   cx="60" cy="60" r="48" fill="none" stroke="#00b8a3" stroke-width="16" stroke-dasharray="0 302" stroke-linecap="round" transform="rotate(-90 60 60)"/>
+                            <circle id="lc-arc-medium" cx="60" cy="60" r="48" fill="none" stroke="#ffc01e" stroke-width="16" stroke-dasharray="0 302" stroke-linecap="round" transform="rotate(-90 60 60)"/>
+                            <circle id="lc-arc-hard"   cx="60" cy="60" r="48" fill="none" stroke="#ff375f" stroke-width="16" stroke-dasharray="0 302" stroke-linecap="round" transform="rotate(-90 60 60)"/>
+                            <text x="60" y="55" text-anchor="middle" font-family="var(--font-heading)" font-size="18" fill="var(--text)" id="lc-center-num">—</text>
+                            <text x="60" y="72" text-anchor="middle" font-family="var(--font-body)" font-size="8" fill="var(--text-light)">SOLVED</text>
+                        </svg>
+                        <div class="lc-username-wrap">
+                            <span class="lc-at">@</span><span id="lc-username-display">YOUR_USERNAME</span>
+                            <a id="lc-profile-link" href="https://leetcode.com/YOUR_USERNAME" target="_blank" rel="noopener" class="lc-ext-link">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="lc-recent">
+                        <div class="lc-recent-label">Recent Submissions</div>
+                        <div id="lc-recent-list" class="lc-recent-list">
+                            <div class="lc-skeleton"></div>
+                            <div class="lc-skeleton"></div>
+                            <div class="lc-skeleton"></div>
+                            <div class="lc-skeleton"></div>
+                        </div>
+                        <div class="lc-loading" id="lc-loading">Fetching from LeetCode…</div>
+                        <div class="lc-error" id="lc-error" style="display:none">Could not load live data — set your username in the config block.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ========== SIGNAL ROUTE GAME ========== -->
+    <section id="game" class="section">
+        <div class="container">
+            <div class="section-label">Mini Game</div>
+            <h2 class="section-heading" data-animate="split">Signal Route. Can you connect the nodes?</h2>
+            <p class="section-subheading">Route power signals from sources to receivers without crossing wires. Click a node, then click another to draw a cable.</p>
+            <div class="game-shell reveal-scroll">
+                <div class="game-toolbar">
+                    <div class="game-info">
+                        <span class="game-level-badge" id="game-level">Level 1</span>
+                        <span class="game-stat">Moves: <b id="game-moves">0</b></span>
+                        <span class="game-stat">Connected: <b id="game-connected">0</b> / <b id="game-total">0</b></span>
+                    </div>
+                    <div class="game-btns">
+                        <button id="game-reset" class="game-btn">↺ Reset</button>
+                        <button id="game-next" class="game-btn game-btn-accent" style="display:none">Next Level →</button>
+                    </div>
+                </div>
+                <canvas id="game-canvas" class="game-canvas"></canvas>
+                <div class="game-win-overlay" id="game-win" style="display:none">
+                    <div class="game-win-inner">
+                        <div class="game-win-emoji">⚡</div>
+                        <h3>Signal Routed!</h3>
+                        <p id="game-win-msg">All nodes connected in <b id="game-win-moves">0</b> moves.</p>
+                        <button id="game-next-btn" class="btn-primary" style="margin-top:1rem">Next Level →</button>
                     </div>
                 </div>
             </div>
@@ -1982,7 +2106,7 @@
                             </div>
                             <div>
                                 <div class="cm-label">Email</div>
-                                <div class="cm-value">hello@mrigank.design</div>
+                                <div class="cm-value">mriganksingh7890@gmail.com</div>
                             </div>
                         </div>
                         <div class="contact-method">
@@ -1991,7 +2115,7 @@
                             </div>
                             <div>
                                 <div class="cm-label">Location</div>
-                                <div class="cm-value">San Francisco, CA</div>
+                                <div class="cm-value">Ghaziabad / Delhi, India 🇮🇳</div>
                             </div>
                         </div>
                         <div class="contact-method">
@@ -2005,26 +2129,32 @@
                         </div>
                     </div>
                 </div>
-                <form class="contact-form reveal-scroll" id="contact-form" onsubmit="return false;">
+                <form class="contact-form reveal-scroll" id="contact-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="contact-name">Full Name</label>
-                            <input type="text" id="contact-name" placeholder="John Doe" required autocomplete="name">
+                            <input type="text" id="contact-name" name="name" placeholder="John Doe" required autocomplete="name">
                         </div>
                         <div class="form-group">
                             <label for="contact-email">Email</label>
-                            <input type="email" id="contact-email" placeholder="john@example.com" required autocomplete="email">
+                            <input type="email" id="contact-email" name="email" placeholder="john@example.com" required autocomplete="email">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="contact-subject">Subject</label>
-                        <input type="text" id="contact-subject" placeholder="Project inquiry">
+                        <input type="text" id="contact-subject" name="subject" placeholder="Project inquiry">
                     </div>
                     <div class="form-group">
                         <label for="contact-message">Message</label>
-                        <textarea id="contact-message" placeholder="Tell me about your project..." required></textarea>
+                        <textarea id="contact-message" name="message" placeholder="Tell me about your project..." required></textarea>
                     </div>
-                    <button type="submit" class="btn-submit">Send Message →</button>
+                    <input type="hidden" name="_replyto" id="hidden-reply">
+                    <input type="hidden" name="_subject" value="Portfolio Contact — New Message">
+                    <div class="contact-note">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                        Expect a reply within 24 hours. You can also reach me directly at <a href="mailto:mriganksingh7890@gmail.com">mriganksingh7890@gmail.com</a>.
+                    </div>
+                    <button type="submit" class="btn-submit" id="submit-btn">Send Message →</button>
                 </form>
             </div>
         </div>
@@ -2036,13 +2166,13 @@
             <div class="footer-inner">
                 <div class="footer-left">
                     <div class="footer-logo">Mrigank<span>.</span></div>
-                    <p>Designing with purpose, building with care.</p>
+                    <p>Turning data into decisions, one model at a time.</p>
                 </div>
                 <div class="footer-socials">
-                    <a href="#" aria-label="GitHub">
+                    <a href="https://github.com/Rishi-shut" target="_blank" rel="noopener" aria-label="GitHub">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
                     </a>
-                    <a href="#" aria-label="LinkedIn">
+                    <a href="https://www.linkedin.com/in/mrigank-singh-9215512a8/" target="_blank" rel="noopener" aria-label="LinkedIn">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
                     </a>
                     <a href="#" aria-label="Twitter/X">
@@ -2462,20 +2592,516 @@
             scrollTrigger: { trigger: 'footer', start: 'top 90%' }
         });
 
-        // ============ CONTACT FORM ============
-        document.getElementById('contact-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const btn = e.target.querySelector('.btn-submit');
-            btn.textContent = 'Sending...';
+        // ============ CONTACT FORM (Formspree) ============
+        const contactForm = document.getElementById('contact-form');
+        const submitBtn   = document.getElementById('submit-btn');
+        if (contactForm && submitBtn) {
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                submitBtn.textContent = 'Sending…';
+                submitBtn.disabled = true;
 
-            setTimeout(() => {
-                btn.textContent = 'Send Message →';
-                e.target.reset();
-                const toast = document.getElementById('toast');
-                toast.classList.add('show');
-                setTimeout(() => toast.classList.remove('show'), 3000);
-            }, 1000);
-        });
+                const data = new FormData(contactForm);
+                try {
+                    const res = await fetch(contactForm.action, {
+                        method: 'POST',
+                        body: data,
+                        headers: { 'Accept': 'application/json' }
+                    });
+                    if (res.ok) {
+                        submitBtn.textContent = '✓ Message sent!';
+                        contactForm.reset();
+                        const toast = document.getElementById('toast');
+                        toast.classList.add('show');
+                        setTimeout(() => toast.classList.remove('show'), 3500);
+                        setTimeout(() => { submitBtn.textContent = 'Send Message →'; submitBtn.disabled = false; }, 3500);
+                    } else {
+                        throw new Error('server error');
+                    }
+                } catch {
+                    submitBtn.textContent = 'Error — try again';
+                    submitBtn.disabled = false;
+                }
+            });
+        }
+
+        // ============ LEETCODE STATS ============
+        // ─── CONFIG ─── Set your LeetCode username here:
+        const LC_USERNAME = 'Rishiiiiiiii';
+        // ─────────────────────────────────────────────
+
+        (async function loadLeetCode() {
+            const usernameDisplay = document.getElementById('lc-username-display');
+            const profileLink     = document.getElementById('lc-profile-link');
+            const loadingEl       = document.getElementById('lc-loading');
+            const errorEl         = document.getElementById('lc-error');
+            const recentList      = document.getElementById('lc-recent-list');
+
+            if (usernameDisplay) usernameDisplay.textContent = LC_USERNAME;
+            if (profileLink)     profileLink.href = `https://leetcode.com/${LC_USERNAME}`;
+
+            // Populate donut chart
+            function animateDonut(easy, medium, hard) {
+                const total = easy + medium + hard;
+                if (!total) return;
+                const circ = 2 * Math.PI * 48; // ~301.6
+
+                const easyFrac   = easy   / total;
+                const medFrac    = medium / total;
+                const hardFrac   = hard   / total;
+
+                const easyArc   = easyFrac   * circ;
+                const medArc    = medFrac    * circ;
+                const hardArc   = hardFrac   * circ;
+
+                const arcEasy   = document.getElementById('lc-arc-easy');
+                const arcMed    = document.getElementById('lc-arc-medium');
+                const arcHard   = document.getElementById('lc-arc-hard');
+
+                // Stack offsets: each arc starts where the previous ended
+                arcEasy.setAttribute('stroke-dasharray',  `${easyArc}  ${circ - easyArc}`);
+                arcEasy.setAttribute('stroke-dashoffset', '0');
+
+                const medOffset = -(easyArc);
+                arcMed.setAttribute('stroke-dasharray',  `${medArc} ${circ - medArc}`);
+                arcMed.setAttribute('transform', `rotate(${-90 + easyFrac * 360} 60 60)`);
+
+                const hardOffset = easyFrac + medFrac;
+                arcHard.setAttribute('stroke-dasharray',  `${hardArc} ${circ - hardArc}`);
+                arcHard.setAttribute('transform', `rotate(${-90 + (easyFrac + medFrac) * 360} 60 60)`);
+
+                // Centre text
+                document.getElementById('lc-center-num').textContent = total;
+            }
+
+            function setStatVal(id, val) {
+                const el = document.getElementById(id);
+                if (el) el.textContent = val ?? '—';
+            }
+
+            function timeAgo(unixSeconds) {
+                const diff = Math.floor(Date.now() / 1000) - unixSeconds;
+                if (diff < 60)   return 'just now';
+                if (diff < 3600) return `${Math.floor(diff/60)}m ago`;
+                if (diff < 86400) return `${Math.floor(diff/3600)}h ago`;
+                return `${Math.floor(diff/86400)}d ago`;
+            }
+
+            function renderRecent(submissions) {
+                recentList.innerHTML = '';
+                if (!loadingEl) return;
+                loadingEl.style.display = 'none';
+                submissions.slice(0, 6).forEach(s => {
+                    const diff = (s.difficulty || 'medium').toLowerCase();
+                    const a = document.createElement('a');
+                    a.className = 'lc-recent-item';
+                    a.href = `https://leetcode.com/problems/${s.titleSlug}/`;
+                    a.target = '_blank';
+                    a.rel = 'noopener';
+                    a.innerHTML = `
+                        <span class="lc-pill ${diff}">${diff.charAt(0).toUpperCase() + diff.slice(1)}</span>
+                        <span class="lc-item-name">${s.title}</span>
+                        <span class="lc-item-time">${s.timestamp ? timeAgo(parseInt(s.timestamp)) : ''}</span>
+                    `;
+                    recentList.appendChild(a);
+                });
+            }
+
+            // Using leetcode-stats-api (public, no key needed)
+            const PROXY = `https://leetcode-stats-api.herokuapp.com/${LC_USERNAME}`;
+            const PROXY2 = `https://alfa-leetcode-api.onrender.com/${LC_USERNAME}/solved`;
+
+            try {
+                const [statsRes, solvedRes] = await Promise.allSettled([
+                    fetch(PROXY),
+                    fetch(`https://alfa-leetcode-api.onrender.com/userProfile/${LC_USERNAME}`)
+                ]);
+
+                let easy = 0, medium = 0, hard = 0, total = 0, rank = '—';
+
+                if (statsRes.status === 'fulfilled' && statsRes.value.ok) {
+                    const d = await statsRes.value.json();
+                    if (d.status !== 'error') {
+                        easy   = d.easySolved   ?? 0;
+                        medium = d.mediumSolved  ?? 0;
+                        hard   = d.hardSolved    ?? 0;
+                        total  = d.totalSolved   ?? easy + medium + hard;
+                        rank   = d.ranking ? `#${d.ranking.toLocaleString()}` : '—';
+
+                        setStatVal('lc-total',  total);
+                        setStatVal('lc-easy',   easy);
+                        setStatVal('lc-medium', medium);
+                        setStatVal('lc-hard',   hard);
+                        setStatVal('lc-rank',   rank);
+                        animateDonut(easy, medium, hard);
+                    }
+                }
+
+                // Try fetching recent from alfa-leetcode-api
+                if (solvedRes.status === 'fulfilled' && solvedRes.value.ok) {
+                    const d = await solvedRes.value.json();
+                    const recents = d.recentAcSubmissionList || d.submissionCalendar || null;
+                    if (Array.isArray(recents) && recents.length) {
+                        renderRecent(recents);
+                    } else {
+                        // Fall through to placeholder
+                        throw new Error('no recent');
+                    }
+                } else {
+                    throw new Error('no recent api');
+                }
+
+            } catch {
+                // If APIs fail, show static placeholder rows
+                if (loadingEl) loadingEl.style.display = 'none';
+                const fallback = [
+                    { title: 'Two Sum',                 difficulty: 'Easy',   titleSlug: 'two-sum',                  timestamp: '' },
+                    { title: 'Longest Palindrome',      difficulty: 'Medium', titleSlug: 'longest-palindromic-substring', timestamp: '' },
+                    { title: 'Merge k Sorted Lists',    difficulty: 'Hard',   titleSlug: 'merge-k-sorted-lists',     timestamp: '' },
+                    { title: 'Binary Search',           difficulty: 'Easy',   titleSlug: 'binary-search',            timestamp: '' },
+                    { title: 'Coin Change',             difficulty: 'Medium', titleSlug: 'coin-change',              timestamp: '' },
+                ];
+                renderRecent(fallback);
+                if (errorEl) { errorEl.style.display = 'block'; }
+            }
+        })();
+
+        // ============ SIGNAL ROUTE GAME ============
+        (function() {
+            const canvas  = document.getElementById('game-canvas');
+            if (!canvas) return;
+            const ctx     = canvas.getContext('2d');
+
+            // ─── LEVELS ───────────────────────────────────────────
+            const LEVELS = [
+                {
+                    name: 'Level 1',
+                    grid: 6,
+                    pairs: [
+                        { color: '#4F46E5', nodes: [[0,0],[5,5]] },
+                        { color: '#10b981', nodes: [[0,5],[5,0]] },
+                    ]
+                },
+                {
+                    name: 'Level 2',
+                    grid: 7,
+                    pairs: [
+                        { color: '#4F46E5', nodes: [[0,0],[6,6]] },
+                        { color: '#10b981', nodes: [[0,6],[6,0]] },
+                        { color: '#f59e0b', nodes: [[3,0],[3,6]] },
+                    ]
+                },
+                {
+                    name: 'Level 3',
+                    grid: 8,
+                    pairs: [
+                        { color: '#4F46E5', nodes: [[0,0],[7,7]] },
+                        { color: '#10b981', nodes: [[0,7],[7,0]] },
+                        { color: '#f59e0b', nodes: [[0,3],[7,4]] },
+                        { color: '#ff375f', nodes: [[3,0],[4,7]] },
+                    ]
+                },
+                {
+                    name: 'Level 4',
+                    grid: 9,
+                    pairs: [
+                        { color: '#4F46E5', nodes: [[0,0],[8,8]] },
+                        { color: '#10b981', nodes: [[0,8],[8,0]] },
+                        { color: '#f59e0b', nodes: [[4,0],[4,8]] },
+                        { color: '#ff375f', nodes: [[0,4],[8,4]] },
+                        { color: '#a855f7', nodes: [[2,2],[6,6]] },
+                    ]
+                },
+                {
+                    name: 'Level 5',
+                    grid: 10,
+                    pairs: [
+                        { color: '#4F46E5', nodes: [[0,0],[9,9]] },
+                        { color: '#10b981', nodes: [[0,9],[9,0]] },
+                        { color: '#f59e0b', nodes: [[0,4],[9,5]] },
+                        { color: '#ff375f', nodes: [[4,0],[5,9]] },
+                        { color: '#a855f7', nodes: [[2,2],[7,7]] },
+                        { color: '#00b8a3', nodes: [[2,7],[7,2]] },
+                    ]
+                },
+            ];
+
+            let currentLevel = 0;
+            let state = null;
+
+            function CELL(x,y) { return `${x},${y}`; }
+
+            function initLevel(idx) {
+                const lv = LEVELS[idx];
+                const GRID = lv.grid;
+                const pairs = lv.pairs.map(p => ({
+                    color: p.color,
+                    a: p.nodes[0],
+                    b: p.nodes[1],
+                    path: []
+                }));
+
+                state = {
+                    grid: GRID,
+                    pairs,
+                    drawing: null,     // index of pair currently being drawn
+                    path: [],          // current live path being drawn
+                    moves: 0,
+                    won: false
+                };
+
+                document.getElementById('game-level').textContent    = lv.name;
+                document.getElementById('game-moves').textContent    = '0';
+                document.getElementById('game-connected').textContent = '0';
+                document.getElementById('game-total').textContent    = pairs.length;
+                document.getElementById('game-win').style.display   = 'none';
+
+                resize();
+                draw();
+            }
+
+            function cellSize() {
+                return Math.floor(canvas.width / state.grid);
+            }
+
+            function getCellAt(px, py) {
+                const cs = cellSize();
+                return [Math.floor(px / cs), Math.floor(py / cs)];
+            }
+
+            function isEndpoint(x, y) {
+                for (let i = 0; i < state.pairs.length; i++) {
+                    const p = state.pairs[i];
+                    if ((p.a[0]===x && p.a[1]===y) || (p.b[0]===x && p.b[1]===y)) return i;
+                }
+                return -1;
+            }
+
+            function isOccupied(x, y) {
+                for (const p of state.pairs) {
+                    for (const [px,py] of p.path) {
+                        if (px===x && py===y) return true;
+                    }
+                }
+                return false;
+            }
+
+            function isConnected(pair) {
+                if (pair.path.length < 2) return false;
+                const first = pair.path[0];
+                const last  = pair.path[pair.path.length - 1];
+                const matchA = (first[0]===pair.a[0]&&first[1]===pair.a[1]) || (last[0]===pair.a[0]&&last[1]===pair.a[1]);
+                const matchB = (first[0]===pair.b[0]&&first[1]===pair.b[1]) || (last[0]===pair.b[0]&&last[1]===pair.b[1]);
+                return matchA && matchB;
+            }
+
+            function connectedCount() {
+                return state.pairs.filter(isConnected).length;
+            }
+
+            function draw() {
+                const cs = cellSize();
+                const W  = canvas.width;
+                const H  = canvas.height;
+
+                // Background
+                const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+                ctx.fillStyle = isDark ? '#131316' : '#FAFAF7';
+                ctx.fillRect(0, 0, W, H);
+
+                // Grid lines
+                ctx.strokeStyle = isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.06)';
+                ctx.lineWidth = 1;
+                for (let x = 0; x <= state.grid; x++) {
+                    ctx.beginPath(); ctx.moveTo(x*cs,0); ctx.lineTo(x*cs,H); ctx.stroke();
+                }
+                for (let y = 0; y <= state.grid; y++) {
+                    ctx.beginPath(); ctx.moveTo(0,y*cs); ctx.lineTo(W,y*cs); ctx.stroke();
+                }
+
+                // Draw completed paths
+                for (const p of state.pairs) {
+                    if (p.path.length < 2) continue;
+                    ctx.save();
+                    ctx.strokeStyle = p.color;
+                    ctx.lineWidth = cs * 0.35;
+                    ctx.lineCap = 'round';
+                    ctx.lineJoin = 'round';
+                    ctx.globalAlpha = isConnected(p) ? 1 : 0.65;
+                    ctx.beginPath();
+                    ctx.moveTo(p.path[0][0]*cs + cs/2, p.path[0][1]*cs + cs/2);
+                    for (let i = 1; i < p.path.length; i++) {
+                        ctx.lineTo(p.path[i][0]*cs + cs/2, p.path[i][1]*cs + cs/2);
+                    }
+                    ctx.stroke();
+                    ctx.restore();
+                }
+
+                // Draw live drawing path
+                if (state.drawing !== null && state.path.length >= 1) {
+                    const p = state.pairs[state.drawing];
+                    ctx.save();
+                    ctx.strokeStyle = p.color;
+                    ctx.lineWidth = cs * 0.35;
+                    ctx.lineCap = 'round';
+                    ctx.lineJoin = 'round';
+                    ctx.globalAlpha = 0.6;
+                    ctx.beginPath();
+                    ctx.moveTo(state.path[0][0]*cs + cs/2, state.path[0][1]*cs + cs/2);
+                    for (let i = 1; i < state.path.length; i++) {
+                        ctx.lineTo(state.path[i][0]*cs + cs/2, state.path[i][1]*cs + cs/2);
+                    }
+                    ctx.stroke();
+                    ctx.restore();
+                }
+
+                // Draw nodes
+                for (const p of state.pairs) {
+                    [p.a, p.b].forEach(([nx,ny]) => {
+                        ctx.save();
+                        ctx.fillStyle = p.color;
+                        ctx.shadowColor = p.color;
+                        ctx.shadowBlur = 8;
+                        ctx.beginPath();
+                        ctx.arc(nx*cs + cs/2, ny*cs + cs/2, cs*0.3, 0, Math.PI*2);
+                        ctx.fill();
+                        ctx.restore();
+
+                        // Inner dot
+                        ctx.save();
+                        ctx.fillStyle = isDark ? '#131316' : '#FAFAF7';
+                        ctx.beginPath();
+                        ctx.arc(nx*cs + cs/2, ny*cs + cs/2, cs*0.12, 0, Math.PI*2);
+                        ctx.fill();
+                        ctx.restore();
+                    });
+                }
+            }
+
+            function resize() {
+                const container = canvas.parentElement;
+                const size = Math.min(container.clientWidth, 560);
+                canvas.width  = size;
+                canvas.height = size;
+                draw();
+            }
+
+            // ─── INPUT HANDLING ───────────────────────────────────
+            function getPos(e) {
+                const rect = canvas.getBoundingClientRect();
+                const scaleX = canvas.width  / rect.width;
+                const scaleY = canvas.height / rect.height;
+                if (e.touches) {
+                    return [
+                        (e.touches[0].clientX - rect.left) * scaleX,
+                        (e.touches[0].clientY - rect.top)  * scaleY
+                    ];
+                }
+                return [(e.clientX - rect.left) * scaleX, (e.clientY - rect.top) * scaleY];
+            }
+
+            function onStart(e) {
+                e.preventDefault();
+                if (state.won) return;
+                const [px, py] = getPos(e);
+                const [cx, cy] = getCellAt(px, py);
+                if (cx < 0 || cy < 0 || cx >= state.grid || cy >= state.grid) return;
+
+                const pIdx = isEndpoint(cx, cy);
+                if (pIdx === -1) return;
+
+                // Clear old path for this pair
+                state.pairs[pIdx].path = [];
+                state.drawing = pIdx;
+                state.path = [[cx, cy]];
+            }
+
+            function onMove(e) {
+                e.preventDefault();
+                if (state.drawing === null) return;
+                const [px, py] = getPos(e);
+                const [cx, cy] = getCellAt(px, py);
+                if (cx < 0 || cy < 0 || cx >= state.grid || cy >= state.grid) return;
+
+                const last = state.path[state.path.length - 1];
+                if (last[0] === cx && last[1] === cy) return;
+
+                // Must be adjacent
+                const dx = Math.abs(cx - last[0]);
+                const dy = Math.abs(cy - last[1]);
+                if (dx + dy !== 1) return;
+
+                // Check if this cell is in our own path (backtrack)
+                const inPath = state.path.findIndex(p => p[0]===cx && p[1]===cy);
+                if (inPath >= 0) {
+                    state.path = state.path.slice(0, inPath + 1);
+                    draw(); return;
+                }
+
+                // Check occupied by another path
+                if (isOccupied(cx, cy)) {
+                    const pIdxHere = isEndpoint(cx, cy);
+                    if (pIdxHere !== -1 && pIdxHere !== state.drawing) { draw(); return; }
+                    if (pIdxHere === -1) { draw(); return; }
+                }
+
+                state.path.push([cx, cy]);
+                draw();
+            }
+
+            function onEnd(e) {
+                if (state.drawing === null) return;
+                const p = state.pairs[state.drawing];
+                p.path = [...state.path];
+
+                // Snap: check if last cell is the other endpoint
+                const last = state.path[state.path.length - 1];
+                const isA = p.a[0]===last[0] && p.a[1]===last[1];
+                const isB = p.b[0]===last[0] && p.b[1]===last[1];
+                if ((isA || isB) && state.path.length > 1) {
+                    state.moves++;
+                    document.getElementById('game-moves').textContent = state.moves;
+                    document.getElementById('game-win-moves').textContent = state.moves;
+                }
+
+                state.drawing = null;
+                state.path    = [];
+
+                const cc = connectedCount();
+                document.getElementById('game-connected').textContent = cc;
+
+                if (cc === state.pairs.length) {
+                    state.won = true;
+                    setTimeout(() => {
+                        document.getElementById('game-win').style.display = 'flex';
+                    }, 400);
+                }
+                draw();
+            }
+
+            canvas.addEventListener('mousedown',  onStart);
+            canvas.addEventListener('mousemove',  onMove);
+            canvas.addEventListener('mouseup',    onEnd);
+            canvas.addEventListener('touchstart', onStart, { passive: false });
+            canvas.addEventListener('touchmove',  onMove,  { passive: false });
+            canvas.addEventListener('touchend',   onEnd);
+
+            document.getElementById('game-reset').addEventListener('click', () => {
+                initLevel(currentLevel);
+            });
+
+            function goNext() {
+                currentLevel = (currentLevel + 1) % LEVELS.length;
+                initLevel(currentLevel);
+            }
+            document.getElementById('game-next').addEventListener('click', goNext);
+            document.getElementById('game-next-btn').addEventListener('click', goNext);
+
+            window.addEventListener('resize', resize);
+
+            // Boot
+            initLevel(0);
+        })();
 
     })();
     </script>
