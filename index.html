@@ -2129,7 +2129,7 @@
                         </div>
                     </div>
                 </div>
-                <form class="contact-form reveal-scroll" id="contact-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+                <form class="contact-form reveal-scroll" id="contact-form" action="#" autocomplete="on">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="contact-name">Full Name</label>
@@ -2592,36 +2592,49 @@
             scrollTrigger: { trigger: 'footer', start: 'top 90%' }
         });
 
-        // ============ CONTACT FORM (Formspree) ============
+        // ============ CONTACT FORM (mailto — no backend needed) ============
         const contactForm = document.getElementById('contact-form');
         const submitBtn   = document.getElementById('submit-btn');
         if (contactForm && submitBtn) {
-            contactForm.addEventListener('submit', async (e) => {
+            contactForm.addEventListener('submit', (e) => {
                 e.preventDefault();
-                submitBtn.textContent = 'Sending…';
-                submitBtn.disabled = true;
 
-                const data = new FormData(contactForm);
-                try {
-                    const res = await fetch(contactForm.action, {
-                        method: 'POST',
-                        body: data,
-                        headers: { 'Accept': 'application/json' }
-                    });
-                    if (res.ok) {
-                        submitBtn.textContent = '✓ Message sent!';
-                        contactForm.reset();
-                        const toast = document.getElementById('toast');
-                        toast.classList.add('show');
-                        setTimeout(() => toast.classList.remove('show'), 3500);
-                        setTimeout(() => { submitBtn.textContent = 'Send Message →'; submitBtn.disabled = false; }, 3500);
-                    } else {
-                        throw new Error('server error');
-                    }
-                } catch {
-                    submitBtn.textContent = 'Error — try again';
-                    submitBtn.disabled = false;
+                const name    = (document.getElementById('contact-name').value    || '').trim();
+                const email   = (document.getElementById('contact-email').value   || '').trim();
+                const subject = (document.getElementById('contact-subject').value || '').trim() || 'Portfolio Enquiry';
+                const message = (document.getElementById('contact-message').value || '').trim();
+
+                if (!name || !email || !message) {
+                    submitBtn.textContent = 'Fill all fields ↑';
+                    setTimeout(() => { submitBtn.textContent = 'Send Message →'; }, 2000);
+                    return;
                 }
+
+                const body = [
+                    `Hi Mrigank,`,
+                    ``,
+                    message,
+                    ``,
+                    `---`,
+                    `From: ${name}`,
+                    `Reply-to: ${email}`,
+                ].join('\n');
+
+                const mailto = `mailto:mriganksingh7890@gmail.com`
+                    + `?subject=${encodeURIComponent(subject)}`
+                    + `&body=${encodeURIComponent(body)}`
+                    + `&reply-to=${encodeURIComponent(email)}`;
+
+                // Open mail client
+                window.location.href = mailto;
+
+                // Show success feedback
+                submitBtn.textContent = '✓ Opening email client…';
+                contactForm.reset();
+                const toast = document.getElementById('toast');
+                toast.classList.add('show');
+                setTimeout(() => toast.classList.remove('show'), 3500);
+                setTimeout(() => { submitBtn.textContent = 'Send Message →'; }, 3500);
             });
         }
 
