@@ -1229,9 +1229,79 @@
             }
         }
 
+        /* ─── HAMBURGER BUTTON ─────────────────────────────────────── */
+        #hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: none;
+            padding: 4px;
+            z-index: 110;
+        }
+
+        #hamburger span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--white);
+            border-radius: 2px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        #hamburger.open span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        #hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        #hamburger.open span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        /* Mobile nav overlay */
+        .mobile-nav-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(5, 8, 16, 0.97);
+            backdrop-filter: blur(20px);
+            z-index: 105;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2.5rem;
+        }
+
+        .mobile-nav-overlay.open {
+            display: flex;
+        }
+
+        .mobile-nav-overlay a {
+            color: var(--white);
+            text-decoration: none;
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            transition: color 0.2s ease;
+        }
+
+        .mobile-nav-overlay a:hover {
+            color: var(--cyan);
+        }
+
         @media (max-width: 600px) {
             nav {
                 padding: 1rem;
+            }
+
+            #hamburger {
+                display: flex;
             }
 
             .nav-links {
@@ -1365,8 +1435,19 @@
             </button>
             <a href="https://drive.google.com/file/d/1Rt3szXZjkfRT08xoubVnARmG8hThFRE2/view?usp=sharing" target="_blank"
                 class="btn-primary" style="font-size:0.75rem; padding:0.6rem 1.4rem;">Resume ↗</a>
+            <button id="hamburger" aria-label="Open navigation menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </nav>
+
+    <!-- Mobile nav overlay -->
+    <div class="mobile-nav-overlay" id="mobileNav" role="navigation" aria-label="Mobile navigation">
+        <a href="#about" class="mobile-nav-link">About</a>
+        <a href="#projects" class="mobile-nav-link">Projects</a>
+        <a href="#skills" class="mobile-nav-link">Skills</a>
+        <a href="#contact" class="mobile-nav-link">Contact</a>
+    </div>
 
     <!-- ═══════════════════════════════════════════════════════════════
      HERO
@@ -1792,11 +1873,22 @@
         const cursor = document.getElementById('cursor');
         const cursorTrail = document.getElementById('cursor-trail');
         let mx = 0, my = 0, tx = 0, ty = 0;
+        let cursorVisible = false;
+
+        // Hide cursor elements until the mouse first moves (prevents flash at 0,0)
+        cursor.style.opacity = '0';
+        cursorTrail.style.opacity = '0';
 
         document.addEventListener('mousemove', (e) => {
             mx = e.clientX; my = e.clientY;
             cursor.style.left = mx + 'px';
             cursor.style.top = my + 'px';
+            if (!cursorVisible) {
+                cursorVisible = true;
+                cursor.style.opacity = '1';
+                cursorTrail.style.opacity = '1';
+                tx = mx; ty = my; // snap trail to cursor on first move
+            }
         });
 
         function animateTrail() {
@@ -1808,8 +1900,8 @@
         }
         animateTrail();
 
-        // Expand on hover
-        document.querySelectorAll('a, button, #theme-toggle, .skill-tag, .stat-item, .contact-card').forEach(el => {
+        // Expand on hover — 'button' already covers #theme-toggle, no need to list it twice
+        document.querySelectorAll('a, button, .skill-tag, .stat-item, .contact-card').forEach(el => {
             el.addEventListener('mouseenter', () => {
                 cursor.style.width = '6px';
                 cursor.style.height = '6px';
@@ -1913,7 +2005,33 @@
                 if (target) {
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
+                // Close mobile nav if open
+                closeMobileNav();
             });
+        });
+
+        /* ─── MOBILE HAMBURGER MENU ──────────────────────────────────── */
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobileNav');
+
+        function closeMobileNav() {
+            hamburger.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+            mobileNav.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        hamburger.addEventListener('click', () => {
+            const isOpen = hamburger.classList.toggle('open');
+            hamburger.setAttribute('aria-expanded', String(isOpen));
+            mobileNav.classList.toggle('open', isOpen);
+            // Prevent background scrolling while menu is open
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+        });
+
+        // Close mobile nav on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeMobileNav();
         });
     </script>
 </body>
