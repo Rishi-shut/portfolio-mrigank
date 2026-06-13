@@ -1,11 +1,12 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { GrainOverlay } from '@/components/effects/GrainOverlay';
-import { FloatingSearch } from '@/components/effects/FloatingSearch';
+import { Navbar } from '@/components/layout/Navbar';
+import { CustomCursor } from '@/components/ui/CustomCursor';
+import { PageTransitionOverlay } from '@/components/ui/PageTransitionOverlay';
 
 export const metadata: Metadata = {
-  title: "Mrigank's Cinematic Portfolio",
-  description: "A dark, high-contrast, editorial style portfolio showcasing design systems, frontend animation, and code structures.",
+  title: 'Mrigank Shut | Cinematic Portfolio',
+  description: 'A cinematic, scroll-driven personal portfolio designed with premium corporate aesthetics, typography, and interactive 3D elements.',
 };
 
 export default function RootLayout({
@@ -15,11 +16,22 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="antialiased">
+      <body className="antialiased font-display bg-space text-text-dark select-none">
+        {/* Global Nav */}
+        <Navbar />
+
+        {/* Global Page Transitions */}
+        <PageTransitionOverlay />
+
+        {/* Global Custom Cursor */}
+        <CustomCursor />
+
+        {/* Page Content */}
         {children}
-        <div className="vignette" aria-hidden="true" />
-        <GrainOverlay />
-        <FloatingSearch />
+
+        {/* Aesthetic overlays */}
+        <div className="grain-overlay" aria-hidden="true" />
+        <div className="vignette-overlay" aria-hidden="true" />
       </body>
     </html>
   );
