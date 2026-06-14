@@ -1,45 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
 @import "tailwindcss";
 
-@import "@fontsource/cormorant-garamond/400.css";
-@import "@fontsource/cormorant-garamond/600.css";
-@import "@fontsource/cormorant-garamond/600-italic.css";
-@import "@fontsource/ibm-plex-mono/400.css";
-@import "@fontsource/ibm-plex-mono/500.css";
-@import "@fontsource/space-grotesk/400.css";
-@import "@fontsource/space-grotesk/500.css";
 
 @theme {
-  --font-display: "Space Grotesk", sans-serif;
-  --font-body: "Cormorant Garamond", serif;
-  --font-mono: "IBM Plex Mono", monospace;
+  --font-display: "Montserrat", "Avenir Next", "Avenir", sans-serif;
+  --font-body: "Montserrat", "Avenir Next", "Avenir", sans-serif;
 
   /* Colors */
-  --color-sky: #E8ECEF;
-  --color-pearl: #F2F4F5;
-  --color-mist: #C8D0D8;
-  --color-slate: #6B7A85;
-  --color-teal-dark: #2B5F6E;
-  --color-nav-link: #3D6B78;
-  --color-underline: #2B5F6E;
-
-  --color-space: #050A10;
-  --color-navy: #0A1628;
-  --color-deep-teal: #0D2233;
-  --color-star: #1A3550;
-  --color-wire: #1E7CC8;
-  --color-wire-glow: #2AABFF;
-  --color-text-dark: #B0BEC8;
-  --color-text-white: #FFFFFF;
-
-  --color-forest: #0A1A0E;
-  --color-forest-mid: #1A3020;
-  --color-particle: #4A8A5A;
-
-  --color-footer-bg: #FFFFFF;
-  --color-footer-text: #2B5F6E;
-  --color-rule: #D0D8DC;
-  --color-badge-bg: #1A2A3A;
-  --color-badge-text: #FFFFFF;
+  --color-blue-primary: #0b5e7d;
+  --color-blue-muted: #2d6886;
+  --color-blue-pale: #7d9cad;
+  --color-blue-dark: #082236;
+  --color-navy-black: #000407;
+  --color-deep-ocean: #061d2f;
+  --color-grid-blue: #0097d7;
+  --color-fog-white: #f3f8fa;
+  --color-mist: #eaf0f4;
+  --color-paper: #f6f5f1;
+  --color-text-dark: #20485f;
+  --color-text-muted: #90a1ab;
+  --color-text-white: #f6fbff;
+  --color-line-light: rgba(255,255,255,0.45);
+  --color-line-blue: rgba(11,94,125,0.78);
 }
 
 /* Custom Reset and Scroll Snapping */
@@ -49,37 +31,43 @@
   padding: 0;
 }
 
-html {
-  scroll-behavior: smooth;
-  background: var(--color-space);
+html, body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--color-navy-black);
+  font-family: var(--font-display);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+  color: var(--color-text-white);
   overflow-x: hidden;
 }
 
 body {
-  font-family: var(--font-display);
-  background-color: var(--color-space);
-  color: var(--color-text-dark);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  background-color: var(--color-navy-black);
 }
 
-/* Scroll Snap Container for Homepage */
-.snap-container {
-  scroll-snap-type: y mandatory;
-  overflow-y: scroll;
-  height: 100svh;
-  width: 100vw;
-  scroll-behavior: smooth;
-}
-
-.snap-section {
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-  height: 100svh;
-  width: 100vw;
+/* Page Section structure */
+.scene {
   position: relative;
+  min-height: 100vh;
   overflow: hidden;
+  isolation: isolate;
+}
+
+.scene__bg,
+.scene__mist,
+.scene__overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.scene__content {
+  position: relative;
+  z-index: 5;
+  min-height: 100vh;
 }
 
 /* Custom Scrollbar */
@@ -89,127 +77,107 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-space);
+  background: var(--color-navy-black);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-teal-dark);
+  background: var(--color-blue-primary);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-wire-glow);
+  background: var(--color-grid-blue);
 }
 
-/* Custom Circular Cursor styling */
-.custom-cursor-container {
-  pointer-events: none;
-  mix-blend-mode: difference;
-}
-
-.custom-cursor {
+/* Custom Cursor Follower */
+.cursor-ring {
   position: fixed;
   top: 0;
   left: 0;
-  width: 40px;
-  height: 40px;
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  z-index: 1000;
+  width: 64px;
+  height: 64px;
+  margin-left: -32px;
+  margin-top: -32px;
+  border: 1px solid rgba(11, 94, 125, 0.38);
+  border-radius: 999px;
+  pointer-events: none;
+  mix-blend-mode: normal;
+  transition: width 240ms ease, height 240ms ease, border-color 240ms ease, opacity 240ms ease, background-color 240ms ease;
+}
+
+.cursor-ring.dark {
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.cursor-ring.hovered {
+  width: 82px;
+  height: 82px;
+  margin-left: -41px;
+  margin-top: -41px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: var(--color-grid-blue);
+}
+
+/* News counter badge */
+.news-badge {
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: width 0.25s, height 0.25s, background-color 0.25s, border-color 0.25s;
+  display: inline-grid;
+  place-items: center;
+  background: var(--color-blue-primary);
+  color: white;
+  font-size: 10px;
+  font-weight: 600;
 }
 
-/* Grain Effect Overlay */
-.grain-overlay {
-  pointer-events: none;
-  position: fixed;
-  inset: 0;
-  z-index: 90;
-  opacity: 0.035;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+/* Custom dot menu button */
+.two-dot {
+  width: 34px;
+  height: 20px;
+  border: 0;
+  background: radial-gradient(circle, currentColor 2px, transparent 2.5px) 8px 50%/14px 14px no-repeat,
+              radial-gradient(circle, currentColor 2px, transparent 2.5px) 22px 50%/14px 14px no-repeat;
+  cursor: pointer;
 }
 
-/* Vignette Cinematic Overlay */
-.vignette-overlay {
-  pointer-events: none;
-  position: fixed;
-  inset: 0;
-  z-index: 80;
-  background: radial-gradient(circle at center, transparent 40%, rgba(0, 0, 0, 0.45) 100%);
-}
-
-/* Text Animation Classes */
-.text-reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  animation: revealText 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-
-@keyframes revealText {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Pulse Animation for Scroll Indicator */
-@keyframes wavePulse {
-  0% {
-    transform: translateY(0);
-    opacity: 0.4;
-  }
-  50% {
-    transform: translateY(-5px);
-    opacity: 0.9;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 0.4;
-  }
-}
-
-.animate-pulse-wave {
-  animation: wavePulse 2s ease-in-out infinite;
-}
-
-/* Hover effects for premium feeling */
-.hover-underline {
-  position: relative;
-}
-
-.hover-underline::after {
-  content: '';
+/* Underline active states */
+.site-nav__link::after {
+  content: "";
   position: absolute;
-  width: 100%;
-  transform: scaleX(0);
-  height: 1px;
-  bottom: -4px;
-  left: 0;
-  background-color: currentColor;
-  transform-origin: bottom right;
-  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  left: 50%;
+  bottom: -44px;
+  width: 145px;
+  height: 2px;
+  background: currentColor;
+  opacity: 0.8;
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: center center;
+  transition: transform 480ms cubic-bezier(.22,.61,.36,1);
 }
 
-.hover-underline:hover::after {
-  transform: scaleX(1);
-  transform-origin: bottom left;
+.site-nav__link.is-active::after {
+  transform: translateX(-50%) scaleX(1);
 }
 
-/* Active Link Styles */
-.nav-link-active {
-  position: relative;
-  opacity: 1 !important;
+/* Lenis smooth scroll styling */
+html.lenis, html.lenis body {
+  height: auto;
 }
 
-.nav-link-active::after {
-  content: '';
-  position: absolute;
-  width: 40px;
-  height: 1px;
-  bottom: -8px;
-  left: 0;
-  background-color: currentColor;
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }

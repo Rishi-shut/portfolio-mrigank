@@ -1,12 +1,12 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Navbar } from '@/components/layout/Navbar';
-import { CustomCursor } from '@/components/ui/CustomCursor';
+import { SmoothScrollProvider } from '@/components/effects/SmoothScrollProvider';
+import { CursorRing } from '@/components/ui/CursorRing';
 import { PageTransitionOverlay } from '@/components/ui/PageTransitionOverlay';
 
 export const metadata: Metadata = {
-  title: 'Mrigank Shut | Cinematic Portfolio',
-  description: 'A cinematic, scroll-driven personal portfolio designed with premium corporate aesthetics, typography, and interactive 3D elements.',
+  title: 'Montfort Group | Cinematic Corporate Website',
+  description: 'Montfort Group is a global institutional energy trading, capital, and maritime company. Safely and responsibly delivering solutions worldwide.',
 };
 
 export default function RootLayout({
@@ -16,22 +16,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="antialiased font-display bg-space text-text-dark select-none">
-        {/* Global Nav */}
-        <Navbar />
+      <body className="antialiased font-display bg-navy-black text-text-white select-none">
+        <SmoothScrollProvider>
+          {/* Global Page Transitions */}
+          <PageTransitionOverlay />
 
-        {/* Global Page Transitions */}
-        <PageTransitionOverlay />
+          {/* Global Custom Cursor Ring */}
+          <CursorRing />
 
-        {/* Global Custom Cursor */}
-        <CustomCursor />
-
-        {/* Page Content */}
-        {children}
-
-        {/* Aesthetic overlays */}
-        <div className="grain-overlay" aria-hidden="true" />
-        <div className="vignette-overlay" aria-hidden="true" />
+          {/* Page Content */}
+          {children}
+        </SmoothScrollProvider>
       </body>
     </html>
   );
